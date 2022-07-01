@@ -95,29 +95,172 @@ margin_bottom = -4.0
 
 [node name="Textbox" type="NinePatchRect" parent="UI"]
 anchor_right = 1.0
-margin_bottom = 19.0
+margin_bottom = 16.0
 rect_min_size = Vector2( 0, 8 )
 texture = ExtResource( 5 )
 patch_margin_left = 1
 patch_margin_top = 1
 patch_margin_right = 1
 patch_margin_bottom = 1
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="TextboxLabel" type="Label" parent="UI/Textbox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "This is some placeholder text."
+align = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -58.0
+margin_top = -54.0
+margin_right = 123.0
+texture = ExtResource( 5 )
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/NinePatchRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
 margin_top = 2.0
 margin_right = -2.0
 margin_bottom = -2.0
-text = "This is some placeholder text."
-align = 1
+
+[node name="PartyMemberHBox" type="HBoxContainer" parent="UI/NinePatchRect/VBoxContainer"]
+margin_right = 177.0
+margin_bottom = 14.0
+alignment = 2
+
+[node name="NameLabel" type="Label" parent="UI/NinePatchRect/VBoxContainer/PartyMemberHBox"]
+margin_right = 88.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 0, 14 )
+size_flags_horizontal = 3
+text = "CharName"
+align = 2
+
+[node name="Spacer" type="Label" parent="UI/NinePatchRect/VBoxContainer/PartyMemberHBox"]
+margin_left = 92.0
+margin_top = 3.0
+margin_right = 92.0
+margin_bottom = 11.0
+
+[node name="HPCurrentLabel" type="Label" parent="UI/NinePatchRect/VBoxContainer/PartyMemberHBox"]
+margin_left = 96.0
+margin_right = 130.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 0, 14 )
+text = "HPCurr"
+
+[node name="Label3" type="Label" parent="UI/NinePatchRect/VBoxContainer/PartyMemberHBox"]
+margin_left = 134.0
+margin_right = 141.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 0, 14 )
+text = "/"
+
+[node name="HPMaxLabel" type="Label" parent="UI/NinePatchRect/VBoxContainer/PartyMemberHBox"]
+margin_left = 145.0
+margin_right = 177.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 0, 14 )
+text = "HPMax"
+
+[node name="PartyMemberHBox2" type="HBoxContainer" parent="UI/NinePatchRect/VBoxContainer"]
+margin_top = 18.0
+margin_right = 177.0
+margin_bottom = 32.0
+alignment = 2
+
+[node name="NameLabel" type="Label" parent="UI/NinePatchRect/VBoxContainer/PartyMemberHBox2"]
+margin_right = 88.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 0, 14 )
+size_flags_horizontal = 3
+text = "CharName"
+align = 2
+
+[node name="Spacer" type="Label" parent="UI/NinePatchRect/VBoxContainer/PartyMemberHBox2"]
+margin_left = 92.0
+margin_top = 3.0
+margin_right = 92.0
+margin_bottom = 11.0
+
+[node name="HPCurrentLabel" type="Label" parent="UI/NinePatchRect/VBoxContainer/PartyMemberHBox2"]
+margin_left = 96.0
+margin_right = 130.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 0, 14 )
+text = "HPCurr"
+
+[node name="Label3" type="Label" parent="UI/NinePatchRect/VBoxContainer/PartyMemberHBox2"]
+margin_left = 134.0
+margin_right = 141.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 0, 14 )
+text = "/"
+
+[node name="HPMaxLabel" type="Label" parent="UI/NinePatchRect/VBoxContainer/PartyMemberHBox2"]
+margin_left = 145.0
+margin_right = 177.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 0, 14 )
+text = "HPMax"
+
+[node name="PartyMemberHBox3" type="HBoxContainer" parent="UI/NinePatchRect/VBoxContainer"]
+margin_top = 36.0
+margin_right = 177.0
+margin_bottom = 50.0
+alignment = 2
+
+[node name="NameLabel" type="Label" parent="UI/NinePatchRect/VBoxContainer/PartyMemberHBox3"]
+margin_right = 88.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 0, 14 )
+size_flags_horizontal = 3
+text = "CharName"
+align = 2
+
+[node name="Spacer" type="Label" parent="UI/NinePatchRect/VBoxContainer/PartyMemberHBox3"]
+margin_left = 92.0
+margin_top = 3.0
+margin_right = 92.0
+margin_bottom = 11.0
+
+[node name="HPCurrentLabel" type="Label" parent="UI/NinePatchRect/VBoxContainer/PartyMemberHBox3"]
+margin_left = 96.0
+margin_right = 130.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 0, 14 )
+text = "HPCurr"
+
+[node name="Label3" type="Label" parent="UI/NinePatchRect/VBoxContainer/PartyMemberHBox3"]
+margin_left = 134.0
+margin_right = 141.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 0, 14 )
+text = "/"
+
+[node name="HPMaxLabel" type="Label" parent="UI/NinePatchRect/VBoxContainer/PartyMemberHBox3"]
+margin_left = 145.0
+margin_right = 177.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 0, 14 )
+text = "HPMax"
 
 [node name="AbilityNinePatch" type="NinePatchRect" parent="UI"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -73.0
-margin_right = 51.0
+margin_top = -72.0
+margin_right = 67.0
 rect_clip_content = true
 texture = ExtResource( 5 )
 patch_margin_left = 1
@@ -137,7 +280,32 @@ margin_right = -2.0
 margin_bottom = -2.0
 
 [node name="Ability" type="Label" parent="UI/AbilityNinePatch/AbilityList"]
-margin_right = 47.0
+margin_right = 63.0
 margin_bottom = 14.0
+rect_min_size = Vector2( 0, 14 )
+text = "Ability"
+align = 1
+
+[node name="Ability2" type="Label" parent="UI/AbilityNinePatch/AbilityList"]
+margin_top = 18.0
+margin_right = 63.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 14 )
+text = "Ability"
+align = 1
+
+[node name="Ability3" type="Label" parent="UI/AbilityNinePatch/AbilityList"]
+margin_top = 36.0
+margin_right = 63.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 14 )
+text = "Ability"
+align = 1
+
+[node name="Ability4" type="Label" parent="UI/AbilityNinePatch/AbilityList"]
+margin_top = 54.0
+margin_right = 63.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 0, 14 )
 text = "Ability"
 align = 1

@@ -4,6 +4,9 @@ onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 onready var anim: AnimationPlayer = $AnimationPlayer
 onready var battle_timer: Timer = $BattleTimer
 
+var player_party: Array = []
+var enemy_party: Array = []
+
 var battle_queue: Array = []
 var decision_phase = false
 var action_phase = false
@@ -22,21 +25,16 @@ func _ready() -> void:
 	
 	
 func _process(delta: float) -> void:
-	if is_on_beat():	
-		$Label2.text = "NOW"
-		$ColorRect.visible = true
-	else:
-		$Label2.text = ""
-		$ColorRect.visible = false
 	get_input()
+
 
 func get_input() -> void:
 	if Input.is_action_just_pressed("confirm"):
 		if action_phase:
 			if is_on_beat():
-				$Label.text = "ON BEAT"
+				print("ON BEAT")
 			else:
-				$Label.text = "OFF BEAT"
+				print("OFF BEAT")
 
 
 func is_on_beat() -> bool:
@@ -58,3 +56,11 @@ func _on_battle_timer_timeout() -> void:
 func _on_timer_timeout() -> void:
 	pass
 	#anim.play("FlashWhite")
+
+
+func set_player_party() -> void:
+	pass
+	
+
+func set_enemy_party() -> void:
+	pass

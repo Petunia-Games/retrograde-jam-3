@@ -14,6 +14,16 @@ config/name="Retrograde Jam 3"
 run/main_scene="res://Prototype/Battle/Battle.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=256
+window/size/height=240
+window/size/resizable=false
+window/size/test_width=1024
+window/size/test_height=768
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [input]
 
 ui_accept={

@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Music/test_song_150.ogg" type="AudioStream" id=1]
 [ext_resource path="res://Prototype/Battle/Battle.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/test_player.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/test_enemy.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "FlashWhite"
@@ -38,13 +40,53 @@ anims/FlashWhite = SubResource( 1 )
 [node name="BattleTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="Label" type="Label" parent="."]
-margin_left = 498.0
-margin_top = 267.0
-margin_right = 538.0
-margin_bottom = 281.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+[node name="BattleBackground" type="Sprite" parent="."]
 
-[node name="Label2" type="Label" parent="."]
+[node name="EnemyParty" type="VBoxContainer" parent="."]
+margin_left = 27.0
+margin_top = 57.0
+margin_right = 43.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="EnemyMember" type="Control" parent="EnemyParty"]
+margin_right = 16.0
+margin_bottom = 101.0
+rect_min_size = Vector2( 16, 16 )
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="EnemyParty/EnemyMember"]
 margin_right = 40.0
-margin_bottom = 14.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+
+[node name="PlayerParty" type="VBoxContainer" parent="."]
+margin_left = 198.0
+margin_top = 72.0
+margin_right = 214.0
+margin_bottom = 191.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="PartyMember" type="Control" parent="PlayerParty"]
+margin_right = 16.0
+margin_bottom = 119.0
+rect_min_size = Vector2( 16, 16 )
+size_flags_vertical = 3
+
+[node name="Sprite" type="TextureRect" parent="PlayerParty/PartyMember"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 3 )
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Textbox" type="NinePatchRect" parent="UI"]
+anchor_right = 1.0

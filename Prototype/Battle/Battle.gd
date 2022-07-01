@@ -1,5 +1,6 @@
 extends Node
 
+onready var ui: Control = $UI
 onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 onready var anim: AnimationPlayer = $AnimationPlayer
 onready var battle_timer: Timer = $BattleTimer
@@ -18,6 +19,14 @@ var countdown_duration: float = 60000.0 / tempo / 1000.0
 
 
 func _ready() -> void:
+	# Add members to parties
+	PlayerParty.add_to_party(PlayerParty.char_1)
+	PlayerParty.add_to_party(PlayerParty.char_2)
+	PlayerParty.add_to_party(PlayerParty.char_3)
+	
+	#
+	ui.add_party_members_to_list()
+	
 	# Play music and set timer to correct ms value based on the tempo
 	timer.connect("timeout", self, "_on_timer_timeout")
 	battle_timer.connect("timeout", self, "_on_battle_timer_timeout")

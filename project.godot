@@ -14,6 +14,10 @@ config/name="Retrograde Jam 3"
 run/main_scene="res://Prototype/Battle/Battle.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+PlayerParty="*res://PlayerParty.gd"
+
 [display]
 
 window/size/width=256

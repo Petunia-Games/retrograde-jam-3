@@ -10,6 +10,8 @@ var enemy_party: Array = []
 
 var battle_queue: Array = []
 var ability_list: Array = []
+var selected_member
+var selected_enemy
 var decision_phase = false
 var action_phase = false
 
@@ -19,13 +21,14 @@ var countdown_duration: float = 60000.0 / tempo / 1000.0
 
 
 func _ready() -> void:
-	# Add members to parties
+	# Add members to parties (this won't be done here, it's just for testing)
 	PlayerParty.add_to_party(PlayerParty.char_1)
-	PlayerParty.add_to_party(PlayerParty.char_2)
-	PlayerParty.add_to_party(PlayerParty.char_3)
+	#PlayerParty.add_to_party(PlayerParty.char_2)
+	#PlayerParty.add_to_party(PlayerParty.char_3)
 	
 	#
 	ui.add_party_members_to_list()
+	ui.display_text("This is some placeholder text.")
 	
 	# Play music and set timer to correct ms value based on the tempo
 	timer.connect("timeout", self, "_on_timer_timeout")

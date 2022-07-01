@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Music/test_song_150.ogg" type="AudioStream" id=1]
 [ext_resource path="res://Prototype/Battle/Battle.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/test_player.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/test_enemy.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/UI/TextboxBorder.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "FlashWhite"
@@ -87,6 +88,56 @@ texture = ExtResource( 3 )
 [node name="UI" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
 
 [node name="Textbox" type="NinePatchRect" parent="UI"]
 anchor_right = 1.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 0, 8 )
+texture = ExtResource( 5 )
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="TextboxLabel" type="Label" parent="UI/Textbox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+text = "This is some placeholder text."
+align = 1
+
+[node name="AbilityNinePatch" type="NinePatchRect" parent="UI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -73.0
+margin_right = 51.0
+rect_clip_content = true
+texture = ExtResource( 5 )
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AbilityList" type="VBoxContainer" parent="UI/AbilityNinePatch"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+
+[node name="Ability" type="Label" parent="UI/AbilityNinePatch/AbilityList"]
+margin_right = 47.0
+margin_bottom = 14.0
+text = "Ability"
+align = 1

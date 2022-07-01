@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/test_player.png-c7afb3427b56bbeb18aa2fcfc52f375c.stex"
+path="res://.import/TextboxBorder.png-f4b88e601ac6eac8502d030acc305ac5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/test_player.png"
-dest_files=[ "res://.import/test_player.png-c7afb3427b56bbeb18aa2fcfc52f375c.stex" ]
+source_file="res://Sprites/UI/TextboxBorder.png"
+dest_files=[ "res://.import/TextboxBorder.png-f4b88e601ac6eac8502d030acc305ac5.stex" ]
 
 [params]
 

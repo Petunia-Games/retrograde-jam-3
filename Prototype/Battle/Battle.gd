@@ -8,6 +8,7 @@ var player_party: Array = []
 var enemy_party: Array = []
 
 var battle_queue: Array = []
+var ability_list: Array = []
 var decision_phase = false
 var action_phase = false
 
@@ -48,9 +49,9 @@ func is_on_beat() -> bool:
 
 
 func _on_battle_timer_timeout() -> void:
-	action_phase = true
+	decision_phase = true
 	timer.start(countdown_duration)
-	audio_player.play()
+	#audio_player.play()
 
 
 func _on_timer_timeout() -> void:

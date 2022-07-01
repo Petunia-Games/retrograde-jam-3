@@ -8,7 +8,7 @@ var battle_queue: Array = []
 var decision_phase = false
 var action_phase = false
 
-var tempo = 120.0
+var tempo = 150.0
 var timer = Timer.new()
 var countdown_duration: float = 60000.0 / tempo / 1000.0
 

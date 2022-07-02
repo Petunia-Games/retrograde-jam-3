@@ -18,6 +18,11 @@ func select_party_member(member_index) -> void:
 func select_next_ability() -> void:
 	ability_list.select_next_ability()
 	
+	
+func select_previous_ability() -> void:
+	ability_list.select_previous_ability()
+	
+	
 func update_party_member_info(value) -> void:
 	pass
 	

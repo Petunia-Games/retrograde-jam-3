@@ -32,4 +32,10 @@ func select_next_ability() -> void:
 	previously_selected_ability = selected_ability
 
 func select_previous_ability() -> void:
-	pass
+	ability_list.get_child(previously_selected_ability).set_deselected()
+	if selected_ability == 0:
+		selected_ability = ability_list.get_child_count() - 1
+	else:
+		selected_ability = selected_ability - 1
+	ability_list.get_child(selected_ability).set_selected()
+	previously_selected_ability = selected_ability

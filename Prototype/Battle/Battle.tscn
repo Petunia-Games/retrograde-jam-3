@@ -200,3 +200,5 @@ rect_min_size = Vector2( 0, 14 )
 size_flags_horizontal = 3
 text = "HP"
 align = 1
+
+[connection signal="ability_selected" from="UI/AbilityNinePatch" to="." method="_on_AbilityNinePatch_ability_selected"]

@@ -10,8 +10,8 @@ var enemy_party: Array = []
 
 var battle_queue: Array = []
 var ability_list: Array = []
-var selected_member
-var selected_enemy
+var selected_member_index = 0
+var selected_enemy_index = 0
 var decision_phase = false
 var action_phase = false
 
@@ -23,8 +23,10 @@ var countdown_duration: float = 60000.0 / tempo / 1000.0
 func _ready() -> void:
 	# Add members to parties (this won't be done here, it's just for testing)
 	PlayerParty.add_to_party(PlayerParty.char_1)
-	#PlayerParty.add_to_party(PlayerParty.char_2)
-	#PlayerParty.add_to_party(PlayerParty.char_3)
+	PlayerParty.add_to_party(PlayerParty.char_2)
+	PlayerParty.add_to_party(PlayerParty.char_3)
+	
+	player_party = PlayerParty.current_party
 	
 	#
 	ui.add_party_members_to_list()
@@ -35,6 +37,8 @@ func _ready() -> void:
 	battle_timer.connect("timeout", self, "_on_battle_timer_timeout")
 	add_child(timer)
 	battle_timer.start(2)
+	
+	ui.select_party_member(selected_member_index)
 	
 	
 func _process(delta: float) -> void:
@@ -48,6 +52,9 @@ func get_input() -> void:
 				print("ON BEAT")
 			else:
 				print("OFF BEAT")
+	if Input.is_action_just_pressed("cancel"):
+		selected_member_index = (selected_member_index + 1) % player_party.size()
+		ui.select_party_member(selected_member_index)
 
 
 func is_on_beat() -> bool:

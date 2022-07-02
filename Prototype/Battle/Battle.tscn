@@ -114,7 +114,6 @@ __meta__ = {
 [node name="TextboxLabel" type="Label" parent="UI/Textbox"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "This is some placeholder text."
 align = 1
 
 [node name="PlayerPartyInfo" type="NinePatchRect" parent="UI"]

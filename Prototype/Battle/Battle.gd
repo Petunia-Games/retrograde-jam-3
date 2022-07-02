@@ -24,7 +24,7 @@ func _ready() -> void:
 	# Add members to parties (this won't be done here, it's just for testing)
 	PlayerParty.add_to_party(PlayerParty.char_1)
 	#PlayerParty.add_to_party(PlayerParty.char_2)
-	PlayerParty.add_to_party(PlayerParty.char_3)
+	#PlayerParty.add_to_party(PlayerParty.char_3)
 	
 	player_party = PlayerParty.current_party
 	
@@ -50,6 +50,12 @@ func get_input() -> void:
 	# and let it deal with it
 	if Input.is_action_just_pressed("up"):
 		if decision_phase:
+			match ui.current_window:
+				ui.ABILITY:
+					pass
+				ui.SORCERY:
+					pass
+				
 			ui.select_previous_ability()
 	elif Input.is_action_just_pressed("down"):
 		if decision_phase:

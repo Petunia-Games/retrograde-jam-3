@@ -1,10 +1,10 @@
 extends HBoxContainer
 
 onready var pointer: TextureRect = $PointerTexture
-onready var ability_name: Label = $AbilityLabel
+onready var item_name: Label = $ItemLabel
 
 func set_ability_name(_name) -> void:
-	ability_name.text = _name
+	item_name.text = _name
 	
 	
 func set_selected() -> void:

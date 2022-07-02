@@ -1,9 +1,17 @@
 extends Control
 
+enum {
+	ABILITY,
+	SORCERY,
+	ITEM,
+	TARGET
+}
+
 onready var textbox: NinePatchRect = $Textbox
 onready var player_party_info: NinePatchRect = $PlayerPartyInfo
 onready var ability_list: NinePatchRect = $AbilityNinePatch
 
+var current_window
 
 func add_party_members_to_list() -> void:
 	for member in PlayerParty.current_party:

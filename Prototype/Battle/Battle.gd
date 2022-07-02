@@ -46,6 +46,9 @@ func _process(delta: float) -> void:
 
 
 func get_input() -> void:
+	if Input.is_action_just_pressed("down"):
+		if decision_phase:
+			ui.select_next_ability()
 	if Input.is_action_just_pressed("confirm"):
 		if action_phase:
 			if is_on_beat():
@@ -55,6 +58,7 @@ func get_input() -> void:
 	if Input.is_action_just_pressed("cancel"):
 		selected_member_index = (selected_member_index + 1) % player_party.size()
 		ui.select_party_member(selected_member_index)
+	
 
 
 func is_on_beat() -> bool:

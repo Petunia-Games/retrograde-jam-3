@@ -6,6 +6,11 @@ const HP_MAX = "hp_max"
 const LEVEL = "level"
 const EXP_CURRENT = "exp_current"
 const EXP_NEXT = "exp_next"
+const ABILITIES = "abilities"
+const ATTACK = "Attack"
+const SORCERY = "Sorcery"
+const ITEM = "Item"
+const ESCAPE = "Escape"
 
 
 var char_1: Dictionary = {
@@ -15,6 +20,11 @@ var char_1: Dictionary = {
 	LEVEL:1,
 	EXP_CURRENT:0,
 	EXP_NEXT:100,
+	ABILITIES:[
+		ATTACK,
+		ITEM,
+		ESCAPE
+	]
 }
 
 var char_2: Dictionary = {
@@ -24,6 +34,12 @@ var char_2: Dictionary = {
 	LEVEL:1,
 	EXP_CURRENT:0,
 	EXP_NEXT:100,
+	ABILITIES:[
+		ATTACK,
+		SORCERY,
+		ITEM,
+		ESCAPE
+	]
 }
 
 var char_3: Dictionary = {
@@ -33,6 +49,12 @@ var char_3: Dictionary = {
 	LEVEL:1,
 	EXP_CURRENT:0,
 	EXP_NEXT:100,
+	ABILITIES:[
+		ATTACK,
+		SORCERY,
+		ITEM,
+		ESCAPE
+	]
 }
 
 var current_party: Array = []

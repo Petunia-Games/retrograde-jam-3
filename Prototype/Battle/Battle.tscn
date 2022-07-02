@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Music/test_song_150.ogg" type="AudioStream" id=1]
 [ext_resource path="res://Prototype/Battle/Battle.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Prototype/Battle/UI.gd" type="Script" id=6]
 [ext_resource path="res://Prototype/Battle/Textbox.gd" type="Script" id=7]
 [ext_resource path="res://Prototype/Battle/PlayerPartyInfo.gd" type="Script" id=8]
+[ext_resource path="res://Prototype/Battle/UI/AbilityNinePatch.gd" type="Script" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "FlashWhite"
@@ -150,6 +151,7 @@ patch_margin_left = 1
 patch_margin_top = 1
 patch_margin_right = 1
 patch_margin_bottom = 1
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -161,37 +163,6 @@ margin_left = 2.0
 margin_top = 2.0
 margin_right = -2.0
 margin_bottom = -2.0
-
-[node name="Ability" type="Label" parent="UI/AbilityNinePatch/AbilityList"]
-margin_right = 63.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 0, 14 )
-text = "Ability"
-align = 1
-
-[node name="Ability2" type="Label" parent="UI/AbilityNinePatch/AbilityList"]
-margin_top = 18.0
-margin_right = 63.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 0, 14 )
-text = "Ability"
-align = 1
-
-[node name="Ability3" type="Label" parent="UI/AbilityNinePatch/AbilityList"]
-margin_top = 36.0
-margin_right = 63.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 14 )
-text = "Ability"
-align = 1
-
-[node name="Ability4" type="Label" parent="UI/AbilityNinePatch/AbilityList"]
-margin_top = 54.0
-margin_right = 63.0
-margin_bottom = 68.0
-rect_min_size = Vector2( 0, 14 )
-text = "Ability"
-align = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="UI"]
 margin_left = 66.0

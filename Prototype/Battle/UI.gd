@@ -12,7 +12,11 @@ func add_party_members_to_list() -> void:
 	
 func select_party_member(member_index) -> void:
 	player_party_info.set_selected_party_member(member_index)
+	ability_list.set_ability_list(member_index)
 	
+	
+func select_next_ability() -> void:
+	ability_list.select_next_ability()
 	
 func update_party_member_info(value) -> void:
 	pass

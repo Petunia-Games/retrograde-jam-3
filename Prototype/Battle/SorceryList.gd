@@ -1,7 +1,8 @@
 extends NinePatchRect
 
 onready var sorcery_list: GridContainer = $SorceryItemGrid
-onready var sorcery_item_scene = preload("res://Prototype/Battle/UI/Item.tscn")
+
+var sorcery_item_scene = preload("res://Prototype/Battle/UI/Item.tscn")
 
 
 func set_sorcery_list(member_index) -> void:

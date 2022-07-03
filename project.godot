@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "Enemies",
+"language": "GDScript",
+"path": "res://Prototype/Battle/Enemies.gd"
+} ]
+_global_script_class_icons={
+"Enemies": ""
+}
+
 [application]
 
 config/name="Retrograde Jam 3"
@@ -18,6 +28,7 @@ config/icon="res://icon.png"
 
 PlayerParty="*res://PlayerParty.gd"
 Globals="*res://Globals.gd"
+BattleGlobals="*res://BattleGlobals.gd"
 
 [display]
 

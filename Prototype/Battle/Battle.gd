@@ -5,8 +5,6 @@ onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 onready var anim: AnimationPlayer = $AnimationPlayer
 onready var battle_timer: Timer = $BattleTimer
 
-var player_party: Array = []
-var enemy_party: Array = []
 
 var battle_queue: Array = []
 var ability_list: Array = []
@@ -26,7 +24,10 @@ func _ready() -> void:
 	PlayerParty.add_to_party(PlayerParty.char_2)
 	PlayerParty.add_to_party(PlayerParty.char_3)
 	
-	player_party = PlayerParty.current_party
+	for member in PlayerParty.current_party:
+		BattleGlobals.add_player_member(member)
+		
+	BattleGlobals.add_enemy_member()
 	
 	#
 	ui.add_party_members_to_list()
@@ -76,5 +77,3 @@ func set_enemy_party() -> void:
 	pass
 
 
-func _on_AbilityNinePatch_ability_selected(ability_name) -> void:
-	pass # Replace with function body.

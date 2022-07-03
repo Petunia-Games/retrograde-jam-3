@@ -9,18 +9,18 @@ const CANCEL = "cancel"
 const SELECT = "select"
 const NONE = "none"
 
-enum {
-	ABILITY,
-	SORCERY,
-	ITEM,
-	TARGET
-}
+const ABILITY = "Ability"
+const ATTACK = "Attack"
+const SORCERY = "Sorcery"
+const ITEM = "Item"
+const ESCAPE = "Escape"
+const TARGET = "Target"
 
 onready var textbox: NinePatchRect = $Textbox
 onready var player_party_info: NinePatchRect = $PlayerPartyInfo
 onready var ability_list: NinePatchRect = $AbilityList
 onready var sorcery_list: NinePatchRect = $SorceryList
-onready var item_list: NinePatchRect = $ItemList
+#onready var item_list: NinePatchRect = $ItemList
 onready var target_list: NinePatchRect = $TargetList
 
 
@@ -40,18 +40,19 @@ func process_input() -> void:
 				CONFIRM:
 					# Get whatever the ability list was on
 					# Show relevant window
-					var ability_selected = PlayerParty.current_party[selected_party_member_index][PlayerParty.ABILITIES][ability_list.selected_ability]
-					print(ability_selected)
+					var ability_selected = PlayerParty.current_party[selected_party_member_index][PlayerParty.ABILITIES][ability_list.selected_ability_index]
+					set_current_window(ability_selected)
 				SELECT:
 					selected_party_member_index = (selected_party_member_index + 1) % PlayerParty.current_party.size()
 					select_party_member(selected_party_member_index)
 		SORCERY:
-			pass
+			match get_input():
+				CANCEL:
+					hide_current_window()
 		ITEM:
 			pass
 		TARGET:
 			pass
-			
 			
 			
 func get_input() -> String:
@@ -73,11 +74,29 @@ func get_input() -> String:
 		
 	return NONE
 			
-func set_current_window() -> void:
-	pass
+
+# Populates the window's list and then shows it
+func set_current_window(window_name: String) -> void:
+	previous_windows.append(current_window)
+	current_window = window_name
+	
+	match window_name:
+		ABILITY:
+			pass
+		ATTACK:
+			target_list.set_target_list()
+			target_list.visible = true
+		SORCERY:
+			sorcery_list.set_sorcery_list(selected_party_member_index)
+			sorcery_list.visible = true
 	
 
-
+func hide_current_window() -> void:
+	match current_window:
+		SORCERY:
+			sorcery_list.visible = false
+			
+	current_window = previous_windows.pop_back()
 
 
 func add_party_members_to_list() -> void:
@@ -88,7 +107,6 @@ func add_party_members_to_list() -> void:
 func select_party_member(member_index) -> void:
 	player_party_info.set_selected_party_member(member_index)
 	ability_list.set_ability_list(member_index)
-	
 	
 	
 func update_party_member_info(value) -> void:

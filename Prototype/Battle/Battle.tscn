@@ -215,6 +215,7 @@ text = "HP"
 align = 1
 
 [node name="SorceryList" type="NinePatchRect" parent="UI"]
+visible = false
 margin_left = 66.0
 margin_top = 160.0
 margin_right = 195.0
@@ -274,5 +275,3 @@ margin_left = 76.0
 margin_right = 149.0
 margin_bottom = 68.0
 size_flags_horizontal = 3
-
-[connection signal="ability_selected" from="UI/AbilityList" to="." method="_on_AbilityNinePatch_ability_selected"]

@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Control",
+"class": "BattleMember",
+"language": "GDScript",
+"path": "res://Battle/BattleMember.gd"
+} ]
+_global_script_class_icons={
+"BattleMember": ""
+}
+
 [application]
 
 config/name="Retrograde Jam 3"

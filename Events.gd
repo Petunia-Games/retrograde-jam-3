@@ -5,3 +5,16 @@ extends Node
 signal battle_started(msg)
 signal battle_finished(msg)
 
+signal battle_decision_phase_started(msg)
+signal battle_decision_phase_finished(msg)
+
+signal battle_action_phase_started(msg)
+signal battle_action_phase_finished(msg)
+
+signal battle_submenu_added(msg)
+signal battle_submenu_removed(msg)
+
+signal battle_member_selected(msg)
+signal battle_member_deselected(msg)
+
+signal battle_target_selected(msg)

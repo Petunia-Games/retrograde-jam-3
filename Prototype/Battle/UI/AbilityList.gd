@@ -6,6 +6,7 @@ var ability_scene = preload("res://Prototype/Battle/UI/Item.tscn")
 var previously_selected_ability_index = 0
 var selected_ability_index = 0
 
+
 func set_ability_list(member_index) -> void:
 	previously_selected_ability_index = 0
 	selected_ability_index = 0
@@ -28,6 +29,7 @@ func select_next_ability() -> void:
 	selected_ability_index = (selected_ability_index + 1) % ability_list.get_child_count()
 	ability_list.get_child(selected_ability_index).set_selected()
 	previously_selected_ability_index = selected_ability_index
+
 
 func select_previous_ability() -> void:
 	ability_list.get_child(previously_selected_ability_index).set_deselected()

@@ -38,8 +38,6 @@ func process_input() -> void:
 				DOWN:
 					ability_list.select_next_ability()
 				CONFIRM:
-					# Get whatever the ability list was on
-					# Show relevant window (this doesn't show the target list)
 					var selected_ability = PlayerParty.current_party[selected_party_member_index][PlayerParty.ABILITIES][ability_list.selected_ability_index]
 					set_current_window(selected_ability)
 				SELECT:
@@ -68,7 +66,7 @@ func process_input() -> void:
 						current_type = target_list.ENEMY
 					target_list.change_target_type(current_type)
 				CONFIRM:
-					print("Target %s Selected" % target_list.currently_selected_target)
+					pass
 				CANCEL:
 					hide_current_window()
 				SELECT:
@@ -98,6 +96,8 @@ func get_input() -> String:
 
 # Populates the window's list and then shows it
 func set_current_window(window_name: String) -> void:
+	if window_name == ATTACK:
+		window_name = TARGET
 	previous_windows.append(current_window)
 	current_window = window_name
 	

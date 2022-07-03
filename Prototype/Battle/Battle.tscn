@@ -1,9 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Music/test_song_150.ogg" type="AudioStream" id=1]
 [ext_resource path="res://Prototype/Battle/Battle.gd" type="Script" id=2]
-[ext_resource path="res://Sprites/test_player.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/test_enemy.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/UI/TextboxBorder.png" type="Texture" id=5]
 [ext_resource path="res://Prototype/Battle/UI.gd" type="Script" id=6]
 [ext_resource path="res://Prototype/Battle/Textbox.gd" type="Script" id=7]
@@ -59,17 +57,6 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="EnemyMember" type="Control" parent="EnemyParty"]
-margin_right = 16.0
-margin_bottom = 101.0
-rect_min_size = Vector2( 16, 16 )
-size_flags_vertical = 3
-
-[node name="TextureRect" type="TextureRect" parent="EnemyParty/EnemyMember"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 4 )
-
 [node name="PlayerPartySprites" type="VBoxContainer" parent="."]
 margin_left = 198.0
 margin_top = 72.0
@@ -79,17 +66,6 @@ size_flags_horizontal = 3
 __meta__ = {
 "_edit_group_": true
 }
-
-[node name="PartyMemberSprite" type="Control" parent="PlayerPartySprites"]
-margin_right = 16.0
-margin_bottom = 119.0
-rect_min_size = Vector2( 16, 16 )
-size_flags_vertical = 3
-
-[node name="Sprite" type="TextureRect" parent="PlayerPartySprites/PartyMemberSprite"]
-margin_right = 64.0
-margin_bottom = 64.0
-texture = ExtResource( 3 )
 
 [node name="UI" type="Control" parent="."]
 anchor_right = 1.0

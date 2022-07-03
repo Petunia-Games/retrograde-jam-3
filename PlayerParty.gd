@@ -13,6 +13,7 @@ const ITEM = "Item"
 const ESCAPE = "Escape"
 
 
+
 var char_1: Dictionary = {
 	NAME:"char_1",
 	HP_CURRENT:120,
@@ -56,6 +57,12 @@ var char_3: Dictionary = {
 		ESCAPE
 	]
 }
+
+
+var items: Dictionary = {
+	
+}
+
 
 var current_party: Array = []
 

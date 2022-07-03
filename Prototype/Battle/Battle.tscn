@@ -270,7 +270,7 @@ margin_right = 72.0
 margin_bottom = 68.0
 size_flags_horizontal = 3
 
-[node name="PartyTargetList" type="VBoxContainer" parent="UI/TargetList/TargetListHBox"]
+[node name="PlayerTargetList" type="VBoxContainer" parent="UI/TargetList/TargetListHBox"]
 margin_left = 76.0
 margin_right = 149.0
 margin_bottom = 68.0

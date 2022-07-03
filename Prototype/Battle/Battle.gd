@@ -27,7 +27,7 @@ func _ready() -> void:
 	for member in PlayerParty.current_party:
 		BattleGlobals.add_player_member(member)
 		
-	BattleGlobals.add_enemy_member()
+	BattleGlobals.add_enemy_member(Enemies.enemies["0"])
 	
 	#
 	ui.add_party_members_to_list()

@@ -3,7 +3,7 @@ extends HBoxContainer
 onready var pointer: TextureRect = $PointerTexture
 onready var item_name: Label = $ItemLabel
 
-func set_ability_name(_name) -> void:
+func set_item_name(_name) -> void:
 	item_name.text = _name
 	
 	

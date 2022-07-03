@@ -1,4 +1,3 @@
-class_name Enemies
 extends Node
 
 const NAME = "name"

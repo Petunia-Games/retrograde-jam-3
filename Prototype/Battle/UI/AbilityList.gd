@@ -13,7 +13,7 @@ func set_ability_list(member_index) -> void:
 	for ability in PlayerParty.current_party[member_index][PlayerParty.ABILITIES]:
 		var new_ability = ability_scene.instance()
 		ability_list.add_child(new_ability)
-		new_ability.set_ability_name(ability)
+		new_ability.set_item_name(ability)
 	
 	ability_list.get_child(0).set_selected()
 

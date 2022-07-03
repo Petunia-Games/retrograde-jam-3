@@ -12,11 +12,11 @@ var active_menu
 var previous_menu
 
 
-func _ready() -> void:
-	active_menu = ability_list
-	active_menu.populate_list()
+func _process(delta: float) -> void:
+	if active_menu != null:
+		active_menu.process_input()
 
-func set_submenu(submenu) -> void:
-	# TODO: Add safety checks
-	ability_submenu.add_child(submenu)
-	
+
+func set_active_menu(menu, member) -> void:
+	active_menu = menu
+	active_menu.populate_list(member)

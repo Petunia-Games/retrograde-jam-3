@@ -17,4 +17,7 @@ signal battle_submenu_removed(msg)
 signal battle_member_selected(msg)
 signal battle_member_deselected(msg)
 
+signal battle_ability_selected(msg)
+signal battle_spell_selected(msg)
+signal battle_item_selected(msg)
 signal battle_target_selected(msg)

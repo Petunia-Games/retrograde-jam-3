@@ -3,10 +3,11 @@ extends Node
 
 var battle_scene = preload("res://Battle/Battle.tscn")
 
+var encounter_id = 0
+var player_party = []
 
 func _ready() -> void:
 	begin_battle()
-	new_game()
 	
 	
 func new_game() -> void:
@@ -18,3 +19,4 @@ func new_game() -> void:
 func begin_battle() -> void:
 	var battle = battle_scene.instance()
 	add_child(battle)
+	Events.emit_signal("battle_started", [encounter_id, player_party])

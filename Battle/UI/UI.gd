@@ -6,8 +6,10 @@ onready var textbox: NinePatchRect = $Textbox
 
 func _ready() -> void:
 	# Connect signals
+	Events.connect("battle_decision_phase_started", self, "_on_decision_phase_started")
 	textbox.visible = false
 
 
-func set_submenu(submenu) -> void:
-	ability_menu.set_submenu(submenu)
+
+func _on_decision_phase_started() -> void:
+	ability_menu.set_active_menu(ability_menu.ability_list, BattleGlobals.player_party.front())

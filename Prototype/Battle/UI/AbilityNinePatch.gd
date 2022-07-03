@@ -4,7 +4,7 @@ signal ability_selected(ability_name)
 
 onready var ability_list: VBoxContainer = $AbilityList
 
-var ability_scene = preload("res://Prototype/Battle/UI/Ability.tscn")
+var ability_scene = preload("res://Prototype/Battle/UI/Item.tscn")
 var previously_selected_ability = 0
 var selected_ability = 0
 

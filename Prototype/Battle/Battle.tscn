@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Music/test_song_150.ogg" type="AudioStream" id=1]
 [ext_resource path="res://Prototype/Battle/Battle.gd" type="Script" id=2]
@@ -8,8 +8,9 @@
 [ext_resource path="res://Prototype/Battle/UI.gd" type="Script" id=6]
 [ext_resource path="res://Prototype/Battle/Textbox.gd" type="Script" id=7]
 [ext_resource path="res://Prototype/Battle/PlayerPartyInfo.gd" type="Script" id=8]
-[ext_resource path="res://Prototype/Battle/UI/AbilityNinePatch.gd" type="Script" id=9]
+[ext_resource path="res://Prototype/Battle/UI/AbilityList.gd" type="Script" id=9]
 [ext_resource path="res://Prototype/Battle/TargetList.gd" type="Script" id=10]
+[ext_resource path="res://Prototype/Battle/SorceryList.gd" type="Script" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "FlashWhite"
@@ -146,7 +147,7 @@ margin_top = 2.0
 margin_right = -12.0
 margin_bottom = -2.0
 
-[node name="AbilityNinePatch" type="NinePatchRect" parent="UI"]
+[node name="AbilityList" type="NinePatchRect" parent="UI"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -72.0
@@ -163,7 +164,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="AbilityList" type="VBoxContainer" parent="UI/AbilityNinePatch"]
+[node name="AbilityListVBox" type="VBoxContainer" parent="UI/AbilityList"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -172,6 +173,7 @@ margin_right = -2.0
 margin_bottom = -2.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="UI"]
+visible = false
 margin_left = 66.0
 margin_top = 160.0
 margin_right = 247.0
@@ -212,7 +214,32 @@ size_flags_horizontal = 3
 text = "HP"
 align = 1
 
-[node name="TargetListNinePatch" type="NinePatchRect" parent="UI"]
+[node name="SorceryList" type="NinePatchRect" parent="UI"]
+margin_left = 66.0
+margin_top = 160.0
+margin_right = 195.0
+margin_bottom = 232.0
+texture = ExtResource( 5 )
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SorceryItemGrid" type="GridContainer" parent="UI/SorceryList"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+columns = 2
+
+[node name="TargetList" type="NinePatchRect" parent="UI"]
+visible = false
 margin_left = 94.0
 margin_top = 160.0
 margin_right = 247.0
@@ -224,8 +251,12 @@ patch_margin_top = 1
 patch_margin_right = 1
 patch_margin_bottom = 1
 script = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
-[node name="TargetListHBox" type="HBoxContainer" parent="UI/TargetListNinePatch"]
+[node name="TargetListHBox" type="HBoxContainer" parent="UI/TargetList"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -233,15 +264,15 @@ margin_top = 2.0
 margin_right = -2.0
 margin_bottom = -2.0
 
-[node name="EnemyTargetList" type="VBoxContainer" parent="UI/TargetListNinePatch/TargetListHBox"]
+[node name="EnemyTargetList" type="VBoxContainer" parent="UI/TargetList/TargetListHBox"]
 margin_right = 72.0
 margin_bottom = 68.0
 size_flags_horizontal = 3
 
-[node name="PartyTargetList" type="VBoxContainer" parent="UI/TargetListNinePatch/TargetListHBox"]
+[node name="PartyTargetList" type="VBoxContainer" parent="UI/TargetList/TargetListHBox"]
 margin_left = 76.0
 margin_right = 149.0
 margin_bottom = 68.0
 size_flags_horizontal = 3
 
-[connection signal="ability_selected" from="UI/AbilityNinePatch" to="." method="_on_AbilityNinePatch_ability_selected"]
+[connection signal="ability_selected" from="UI/AbilityList" to="." method="_on_AbilityNinePatch_ability_selected"]

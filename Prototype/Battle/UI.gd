@@ -6,6 +6,7 @@ const LEFT = "left"
 const RIGHT = "right"
 const CONFIRM = "confirm"
 const CANCEL = "cancel"
+const SELECT = "select"
 const NONE = "none"
 
 enum {
@@ -17,11 +18,14 @@ enum {
 
 onready var textbox: NinePatchRect = $Textbox
 onready var player_party_info: NinePatchRect = $PlayerPartyInfo
-onready var ability_list: NinePatchRect = $AbilityNinePatch
-onready var target_list: NinePatchRect = $TargetListNinePatch
+onready var ability_list: NinePatchRect = $AbilityList
+onready var sorcery_list: NinePatchRect = $SorceryList
+onready var item_list: NinePatchRect = $ItemList
+onready var target_list: NinePatchRect = $TargetList
 
-var current_window
-var previous_window
+
+var current_window = ABILITY
+var previous_windows: Array = []
 var selected_party_member_index = 0
 
 
@@ -34,8 +38,11 @@ func process_input() -> void:
 				DOWN:
 					ability_list.select_next_ability()
 				CONFIRM:
-					pass
-				CANCEL:
+					# Get whatever the ability list was on
+					# Show relevant window
+					var ability_selected = PlayerParty.current_party[selected_party_member_index][PlayerParty.ABILITIES][ability_list.selected_ability]
+					print(ability_selected)
+				SELECT:
 					selected_party_member_index = (selected_party_member_index + 1) % PlayerParty.current_party.size()
 					select_party_member(selected_party_member_index)
 		SORCERY:
@@ -61,20 +68,8 @@ func get_input() -> String:
 		return CONFIRM
 	elif Input.is_action_just_pressed(CANCEL):
 		return CANCEL
-
-	# Check for held inputs
-	if Input.is_action_pressed(UP):
-		return UP
-	elif Input.is_action_pressed(DOWN):
-		return DOWN
-	elif Input.is_action_pressed(LEFT):
-		return LEFT
-	elif Input.is_action_pressed(RIGHT):
-		return RIGHT
-	elif Input.is_action_pressed(CONFIRM):
-		return CONFIRM
-	elif Input.is_action_pressed(CANCEL):
-		return CANCEL
+	elif Input.is_action_just_pressed(SELECT):
+		return SELECT
 		
 	return NONE
 			

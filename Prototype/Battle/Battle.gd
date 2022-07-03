@@ -23,8 +23,8 @@ var countdown_duration: float = 60000.0 / tempo / 1000.0
 func _ready() -> void:
 	# Add members to parties (this won't be done here, it's just for testing)
 	PlayerParty.add_to_party(PlayerParty.char_1)
-	#PlayerParty.add_to_party(PlayerParty.char_2)
-	#PlayerParty.add_to_party(PlayerParty.char_3)
+	PlayerParty.add_to_party(PlayerParty.char_2)
+	PlayerParty.add_to_party(PlayerParty.char_3)
 	
 	player_party = PlayerParty.current_party
 	
@@ -42,39 +42,10 @@ func _ready() -> void:
 	
 	
 func _process(delta: float) -> void:
-	get_input()
+	if decision_phase:
+		ui.process_input()
 
-
-func get_input() -> void:
-	# This is a shit way to do this, I need to be able to feed all of this to the UI
-	# and let it deal with it
-	if Input.is_action_just_pressed("up"):
-		if decision_phase:
-			match ui.current_window:
-				ui.ABILITY:
-					pass
-				ui.SORCERY:
-					pass
-				
-			ui.select_previous_ability()
-	elif Input.is_action_just_pressed("down"):
-		if decision_phase:
-			ui.select_next_ability()
-			
-	if Input.is_action_just_pressed("confirm"):
-		if decision_phase:
-			pass
-		if action_phase:
-			if is_on_beat():
-				print("ON BEAT")
-			else:
-				print("OFF BEAT")
-	if Input.is_action_just_pressed("cancel"):
-		if decision_phase:
-			selected_member_index = (selected_member_index + 1) % player_party.size()
-			ui.select_party_member(selected_member_index)
 	
-
 
 func is_on_beat() -> bool:
 	var upper = countdown_duration * 0.1

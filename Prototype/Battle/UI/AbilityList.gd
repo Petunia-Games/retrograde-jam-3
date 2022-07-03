@@ -2,7 +2,7 @@ extends NinePatchRect
 
 signal ability_selected(ability_name)
 
-onready var ability_list: VBoxContainer = $AbilityList
+onready var ability_list: VBoxContainer = $AbilityListVBox
 
 var ability_scene = preload("res://Prototype/Battle/UI/Item.tscn")
 var previously_selected_ability = 0

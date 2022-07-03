@@ -30,6 +30,7 @@ PlayerParty="*res://PlayerParty.gd"
 Globals="*res://Globals.gd"
 BattleGlobals="*res://BattleGlobals.gd"
 Enemies="*res://Prototype/Battle/Enemies.gd"
+Events="*res://Events.gd"
 
 [display]
 

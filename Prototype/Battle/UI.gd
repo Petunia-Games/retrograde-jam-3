@@ -39,9 +39,9 @@ func process_input() -> void:
 					ability_list.select_next_ability()
 				CONFIRM:
 					# Get whatever the ability list was on
-					# Show relevant window
-					var ability_selected = PlayerParty.current_party[selected_party_member_index][PlayerParty.ABILITIES][ability_list.selected_ability_index]
-					set_current_window(ability_selected)
+					# Show relevant window (this doesn't show the target list)
+					var selected_ability = PlayerParty.current_party[selected_party_member_index][PlayerParty.ABILITIES][ability_list.selected_ability_index]
+					set_current_window(selected_ability)
 				SELECT:
 					selected_party_member_index = (selected_party_member_index + 1) % PlayerParty.current_party.size()
 					select_party_member(selected_party_member_index)
@@ -49,10 +49,31 @@ func process_input() -> void:
 			match get_input():
 				CANCEL:
 					hide_current_window()
+				SELECT:
+					selected_party_member_index = (selected_party_member_index + 1) % PlayerParty.current_party.size()
+					select_party_member(selected_party_member_index)
 		ITEM:
 			pass
 		TARGET:
-			pass
+			var current_type = target_list.ENEMY
+			match get_input():
+				UP:
+					target_list.select_previous_target()
+				DOWN:
+					target_list.select_next_target()
+				LEFT, RIGHT:
+					if current_type == target_list.ENEMY:
+						current_type = target_list.PLAYER
+					elif current_type == target_list.PLAYER:
+						current_type = target_list.ENEMY
+					target_list.change_target_type(current_type)
+				CONFIRM:
+					print("Target %s Selected" % target_list.currently_selected_target)
+				CANCEL:
+					hide_current_window()
+				SELECT:
+					selected_party_member_index = (selected_party_member_index + 1) % PlayerParty.current_party.size()
+					select_party_member(selected_party_member_index)
 			
 			
 func get_input() -> String:

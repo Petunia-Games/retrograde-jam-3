@@ -23,28 +23,41 @@ func _process(delta: float) -> void:
 
 
 # This function will cause issues
-func set_active_menu(menu, member) -> void:
+func set_active_menu(menu, data: Dictionary = {}) -> void:
 	previous_menu = active_menu
 	active_menu = menu
-	active_menu.populate_list(member)
 	
 	if active_menu == ability_list:
 		if not party_list in ability_submenu.get_children():
-			add_submenu(party_list)
-		
+			remove_submenu()
+			ability_submenu.add_child(party_list)
+			party_list.populate_list()
+	else:
+		remove_submenu()
+		ability_submenu.add_child(active_menu)
+	
+	active_menu.populate_list(data)
+
 
 func change_party_member() -> void:
 	party_list.set_selected()
-	
-	
-func add_submenu(submenu) -> void:
-	ability_submenu.add_child(submenu)
-	submenu.populate_list()
 
 
-func remove_submenu(submenu) -> void:
-	ability_submenu.remove_child(submenu)
+func remove_submenu() -> void:
+	if ability_submenu.get_child_count() == 0:
+		return
+	else:
+		for child in ability_submenu.get_children():
+			child.queue_free()
 
 
 func _on_battle_ability_selected(ability) -> void:
-	pass
+	match ability.ability_submenu:
+		Abilities.SUBMENUS.NONE:
+			pass
+		Abilities.SUBMENUS.SPELLS:
+			set_active_menu(sorcery_list, BattleGlobals.player_party[BattleGlobals.active_party_member_index])
+		Abilities.SUBMENUS.ITEMS:
+			set_active_menu(item_list, PlayerParty.items)
+		Abilities.SUBMENUS.TARGETS:
+			set_active_menu(target_list, {})

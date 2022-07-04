@@ -64,7 +64,35 @@ var id: Dictionary = {
 			{str(Spells.FIRE):{
 				SPELL_POINTS_CURRENT:5,
 				SPELL_POINTS_MAX:5
-			}}
+			}},
+			{str(Spells.FIRE):{
+				SPELL_POINTS_CURRENT:5,
+				SPELL_POINTS_MAX:5
+			}},
+			{str(Spells.FIRE):{
+				SPELL_POINTS_CURRENT:5,
+				SPELL_POINTS_MAX:5
+			}},
+			{str(Spells.FIRE):{
+				SPELL_POINTS_CURRENT:5,
+				SPELL_POINTS_MAX:5
+			}},
+			{str(Spells.FIRE):{
+				SPELL_POINTS_CURRENT:5,
+				SPELL_POINTS_MAX:5
+			}},
+			{str(Spells.FIRE):{
+				SPELL_POINTS_CURRENT:5,
+				SPELL_POINTS_MAX:5
+			}},
+			{str(Spells.FIRE):{
+				SPELL_POINTS_CURRENT:5,
+				SPELL_POINTS_MAX:5
+			}},
+			{str(Spells.FIRE):{
+				SPELL_POINTS_CURRENT:5,
+				SPELL_POINTS_MAX:5
+			}},
 		]
 	},
 }

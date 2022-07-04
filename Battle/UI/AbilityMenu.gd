@@ -29,12 +29,13 @@ func set_active_menu(menu, data: Dictionary = {}) -> void:
 	
 	if active_menu == ability_list:
 		if not party_list in ability_submenu.get_children():
-			remove_submenu()
+			hide_submenu()
 			ability_submenu.add_child(party_list)
 			party_list.populate_list()
 	else:
-		remove_submenu()
-		ability_submenu.add_child(active_menu)
+		if not active_menu in ability_submenu.get_children():
+			hide_submenu()
+			ability_submenu.add_child(active_menu)
 	
 	active_menu.populate_list(data)
 
@@ -43,12 +44,12 @@ func change_party_member() -> void:
 	party_list.set_selected()
 
 
-func remove_submenu() -> void:
+func hide_submenu() -> void:
 	if ability_submenu.get_child_count() == 0:
 		return
 	else:
 		for child in ability_submenu.get_children():
-			child.queue_free()
+			child.visible = false
 
 
 func _on_battle_ability_selected(ability) -> void:

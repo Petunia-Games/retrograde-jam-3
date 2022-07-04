@@ -14,7 +14,7 @@ var previous_menu
 
 func _ready() -> void:
 	Events.connect("battle_ability_selected", self, "_on_battle_ability_selected")
-
+	Events.connect("battle_spell_selected", self, "_on_battle_spell_selected")
 
 
 func _process(delta: float) -> void:
@@ -71,3 +71,7 @@ func _on_battle_ability_selected(ability) -> void:
 			set_active_menu(item_list, PlayerParty.items)
 		Abilities.SUBMENUS.TARGETS:
 			set_active_menu(target_list, {})
+
+
+func _on_battle_spell_selected(spell) -> void:
+	set_active_menu(target_list, {})

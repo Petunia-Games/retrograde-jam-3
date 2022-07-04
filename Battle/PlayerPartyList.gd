@@ -13,7 +13,7 @@ func populate_list() -> void:
 
 func clear_list() -> void:
 	for child in get_children():
-		child.queue_free()
+		child.free()
 
 
 func set_selected() -> void:

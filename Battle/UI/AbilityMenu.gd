@@ -32,10 +32,19 @@ func set_active_menu(menu, data: Dictionary = {}) -> void:
 			hide_submenu()
 			ability_submenu.add_child(party_list)
 			party_list.populate_list()
+			party_list.set_selected()
+		else:
+			hide_submenu()
+			party_list.populate_list()
+			party_list.set_selected()
+			party_list.visible = true
 	else:
 		if not active_menu in ability_submenu.get_children():
 			hide_submenu()
 			ability_submenu.add_child(active_menu)
+		else:
+			hide_submenu()
+			active_menu.visible = true
 	
 	active_menu.populate_list(data)
 

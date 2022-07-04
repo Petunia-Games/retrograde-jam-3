@@ -17,8 +17,10 @@ func process_input() -> void:
 	if Input.is_action_just_pressed("confirm"):
 		Events.emit_signal("battle_spell_selected", get_child(selected_spell_index))
 	elif Input.is_action_just_pressed("cancel"):
+		get_child(selected_spell_index).set_deselected()
 		Events.emit_signal("battle_submenu_cancelled")
 	elif Input.is_action_just_pressed("select"):
+		get_child(selected_spell_index).set_deselected()
 		BattleGlobals.set_active_party_member()
 		Events.emit_signal("battle_member_changed")
 
@@ -29,7 +31,15 @@ func add_spell_to_list(spell_data) -> void:
 	spell.set_data(spell_data)
 
 
+func clear_list() -> void:
+	for child in get_children():
+		child.free()
+
+
 func populate_list(member_data) -> void:
+	selected_spell_index = 0
+	current_column = 0
+	clear_list()
 	for spell in member_data[PlayerParty.SPELLS]:
 		add_spell_to_list(spell)
 

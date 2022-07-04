@@ -6,7 +6,9 @@ var map_scene = preload("res://Battle/Map/Map.tscn")
 func _ready() -> void:
 	Globals.encounter_id = 0
 	Globals.field_id = 0
-	Globals.current_party = [0]
+	Globals.current_party = [
+		PlayerParty.id[str(PlayerParty.PLAYER)],
+		PlayerParty.id[str(PlayerParty.MELINDA)]]
 	begin_battle()
 	
 	

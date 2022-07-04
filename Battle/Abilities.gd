@@ -1,4 +1,3 @@
-class_name Abilities
 extends Node
 
 enum {

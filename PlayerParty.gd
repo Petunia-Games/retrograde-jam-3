@@ -18,9 +18,11 @@ const SORCERY = "sorcery"
 const DEFENSE = "defense"
 const ABILITIES = "abilities"
 const SPELLS = "spells"
+const SPELL_POINTS_CURRENT = "spell_points_current"
+const SPELL_POINTS_MAX = "spell_points_max"
 
 
-var members = {
+var id: Dictionary = {
 	str(PLAYER):{
 		NAME:"Player",
 		LEVEL:1,
@@ -33,9 +35,9 @@ var members = {
 		SORCERY:0,
 		DEFENSE:2,
 		ABILITIES:[
-			Abilities.id[Abilities.ATTACK],
-			Abilities.id[Abilities.ITEM],
-			Abilities.id[Abilities.ESCAPE]
+			Abilities.id[str(Abilities.ATTACK)],
+			Abilities.id[str(Abilities.ITEM)],
+			Abilities.id[str(Abilities.ESCAPE)]
 		],
 		SPELLS:[
 			{}
@@ -53,13 +55,16 @@ var members = {
 		SORCERY:4,
 		DEFENSE:2,
 		ABILITIES:[
-			Abilities.id[Abilities.ATTACK],
-			Abilities.id[Abilities.SORCERY],
-			Abilities.id[Abilities.ITEM],
-			Abilities.id[Abilities.ESCAPE]
+			Abilities.id[str(Abilities.ATTACK)],
+			Abilities.id[str(Abilities.SORCERY)],
+			Abilities.id[str(Abilities.ITEM)],
+			Abilities.id[str(Abilities.ESCAPE)]
 		],
 		SPELLS:[
-			{}
+			{str(Spells.FIRE):{
+				SPELL_POINTS_CURRENT:5,
+				SPELL_POINTS_MAX:5
+			}}
 		]
 	},
 }

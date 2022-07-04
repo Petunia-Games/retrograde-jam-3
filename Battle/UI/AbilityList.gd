@@ -14,6 +14,7 @@ func process_input() -> void:
 	if Input.is_action_just_pressed("confirm"):
 		Events.emit_signal("battle_ability_selected", get_child(selected_ability))
 	
+	
 func add_ability_to_list(ability_info) -> void:
 	var ability = ability_scene.instance()
 	list.add_child(ability)
@@ -25,6 +26,8 @@ func populate_list(member) -> void:
 	clear_list()
 	for ability in member.abilities:
 		add_ability_to_list(ability)
+		
+	list.get_child(0).set_selected()
 	
 func clear_list() -> void:
 	if list.get_child_count() == 0:

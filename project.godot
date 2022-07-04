@@ -9,18 +9,12 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
-"class": "Abilities",
-"language": "GDScript",
-"path": "res://Battle/Abilities.gd"
-}, {
 "base": "Control",
 "class": "BattleMember",
 "language": "GDScript",
 "path": "res://Battle/BattleMember.gd"
 } ]
 _global_script_class_icons={
-"Abilities": "",
 "BattleMember": ""
 }
 
@@ -32,9 +26,11 @@ config/icon="res://icon.png"
 
 [autoload]
 
-PlayerParty="*res://PlayerParty.gd"
 Globals="*res://Globals.gd"
+Abilities="*res://Battle/Abilities.gd"
+Spells="*res://Battle/Spells.gd"
 BattleGlobals="*res://BattleGlobals.gd"
+PlayerParty="*res://PlayerParty.gd"
 Events="*res://Events.gd"
 Enemies="*res://Battle/Enemies.gd"
 Encounters="*res://Battle/Encounters.gd"

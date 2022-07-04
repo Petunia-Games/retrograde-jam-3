@@ -3,7 +3,7 @@ extends NinePatchRect
 onready var list: VBoxContainer = $VBoxContainer
 
 var ability_scene = preload("res://Battle/UI/Ability.tscn")
-var selected_ability = 0
+var selected_ability_index = 0
 
 func process_input() -> void:
 	if Input.is_action_just_pressed("up"):
@@ -12,9 +12,12 @@ func process_input() -> void:
 		select_next_ability()
 	
 	if Input.is_action_just_pressed("confirm"):
-		Events.emit_signal("battle_ability_selected", get_child(selected_ability))
-	
-	
+		Events.emit_signal("battle_ability_selected", list.get_child(selected_ability_index))
+	elif Input.is_action_just_pressed("select"):
+		BattleGlobals.set_active_party_member()
+		Events.emit_signal("battle_member_changed")
+		
+		
 func add_ability_to_list(ability_info) -> void:
 	var ability = ability_scene.instance()
 	list.add_child(ability)
@@ -22,23 +25,33 @@ func add_ability_to_list(ability_info) -> void:
 	
 	
 func populate_list(member) -> void:
+	# TODO: Safety checks
 	# Get ability list from member and add them to the list
 	clear_list()
 	for ability in member.abilities:
 		add_ability_to_list(ability)
 		
-	list.get_child(0).set_selected()
+	selected_ability_index = 0
+	list.get_child(selected_ability_index).set_selected()
+	
 	
 func clear_list() -> void:
 	if list.get_child_count() == 0:
 		return
 	for child in list.get_children():
-		child.queue_free()
+		child.free()
 	
 	
 func select_next_ability() -> void:
-	pass
+	list.get_child(selected_ability_index).set_deselected()
+	selected_ability_index = (selected_ability_index + 1) % list.get_child_count()
+	list.get_child(selected_ability_index).set_selected()
 	
 
 func select_previous_ability() -> void:
-	pass
+	list.get_child(selected_ability_index).set_deselected()
+	if selected_ability_index == 0:
+		selected_ability_index = list.get_child_count() - 1
+	else:
+		selected_ability_index = selected_ability_index - 1
+	list.get_child(selected_ability_index).set_selected()

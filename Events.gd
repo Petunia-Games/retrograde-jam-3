@@ -14,8 +14,7 @@ signal battle_action_phase_finished(msg)
 signal battle_submenu_added(msg)
 signal battle_submenu_removed(msg)
 
-signal battle_member_selected(msg)
-signal battle_member_deselected(msg)
+signal battle_member_changed(msg)
 
 signal battle_ability_selected(msg)
 signal battle_spell_selected(msg)

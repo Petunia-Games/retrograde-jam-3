@@ -13,7 +13,7 @@ var current_phase
 
 func _ready() -> void:
 	Events.connect("battle_started", self, "_on_battle_started")
-
+	
 
 func set_enemies_from_encounter_id(enc_id) -> void:
 	for enemy_id in Encounters.id[str(enc_id)]:
@@ -23,6 +23,8 @@ func set_enemies_from_encounter_id(enc_id) -> void:
 func set_party_members() -> void:
 	for member in Globals.current_party:
 		BattleGlobals.player_party.append(member)
+
+	BattleGlobals.active_party_member_index = 0
 
 
 func _on_battle_started() -> void:

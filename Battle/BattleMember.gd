@@ -4,7 +4,7 @@ extends Control
 export(String) var member_name: String = ""
 export(int) var member_id
 export(Texture) var sprite
-export(bool) var is_enemy = false
+export(bool) var is_dead = false
 export(bool) var stats_known = false
 
 export(int) var level: int = 0
@@ -16,4 +16,4 @@ export(int) var speed: int = 0
 export(int) var sorcery: int = 0
 export(int) var defense: int = 0
 
-export(Array) var abilities = []
+export(Array) var abilities: Array = []

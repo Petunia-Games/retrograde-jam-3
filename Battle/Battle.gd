@@ -16,7 +16,8 @@ func _ready() -> void:
 
 
 func set_enemies_from_encounter_id(enc_id) -> void:
-	pass
+	for enemy_id in Encounters.id[str(enc_id)]:
+		BattleGlobals.enemy_party.append(Enemies.enemy_list[str(enemy_id)])
 
 
 func set_party_members() -> void:

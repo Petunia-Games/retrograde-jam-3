@@ -1,4 +1,3 @@
-class_name Enemies
 extends Node
 
 enum {
@@ -15,9 +14,11 @@ const STRENGTH = "strength"
 const SPEED = "speed"
 const SORCERY = "socery"
 const DEFENSE = "defense"
+const ABILITIES = "abilities"
+const ITEMS = "items"
 
 
-var enemies = {
+var enemy_list = {
 	str(TEST):{
 		NAME:"Test",
 		LEVEL:1,

@@ -1,61 +1,67 @@
 extends Node
 
+enum {
+	PLAYER,
+	MELINDA,
+	
+}
+
 const NAME = "name"
 const HP_CURRENT = "hp_current"
 const HP_MAX = "hp_max"
 const LEVEL = "level"
 const EXP_CURRENT = "exp_current"
 const EXP_NEXT = "exp_next"
+const STRENGTH = "strength"
+const SPEED = "speed"
+const SORCERY = "sorcery"
+const DEFENSE = "defense"
 const ABILITIES = "abilities"
-const ATTACK = "Attack"
-const SORCERY = "Sorcery"
-const ITEM = "Item"
-const ESCAPE = "Escape"
+const SPELLS = "spells"
 
 
-
-var char_1: Dictionary = {
-	NAME:"char_1",
-	HP_CURRENT:120,
-	HP_MAX:120,
-	LEVEL:1,
-	EXP_CURRENT:0,
-	EXP_NEXT:100,
-	ABILITIES:[
-		ATTACK,
-		ITEM,
-		ESCAPE
-	]
-}
-
-var char_2: Dictionary = {
-	NAME:"char_2",
-	HP_CURRENT:100,
-	HP_MAX:100,
-	LEVEL:1,
-	EXP_CURRENT:0,
-	EXP_NEXT:100,
-	ABILITIES:[
-		ATTACK,
-		SORCERY,
-		ITEM,
-		ESCAPE
-	]
-}
-
-var char_3: Dictionary = {
-	NAME:"char_3",
-	HP_CURRENT:150,
-	HP_MAX:150,
-	LEVEL:1,
-	EXP_CURRENT:0,
-	EXP_NEXT:100,
-	ABILITIES:[
-		ATTACK,
-		SORCERY,
-		ITEM,
-		ESCAPE
-	]
+var members = {
+	str(PLAYER):{
+		NAME:"Player",
+		LEVEL:1,
+		EXP_CURRENT:0,
+		EXP_NEXT:100,
+		HP_MAX:100,
+		HP_CURRENT:100,
+		STRENGTH:3,
+		SPEED:2,
+		SORCERY:0,
+		DEFENSE:2,
+		ABILITIES:[
+			Abilities.id[Abilities.ATTACK],
+			Abilities.id[Abilities.ITEM],
+			Abilities.id[Abilities.ESCAPE]
+		],
+		SPELLS:[
+			{}
+		]
+	},
+	str(MELINDA):{
+		NAME:"Melinda",
+		LEVEL:5,
+		EXP_CURRENT:0,
+		EXP_NEXT:100,
+		HP_MAX:150,
+		HP_CURRENT:150,
+		STRENGTH:1,
+		SPEED:3,
+		SORCERY:4,
+		DEFENSE:2,
+		ABILITIES:[
+			Abilities.id[Abilities.ATTACK],
+			Abilities.id[Abilities.SORCERY],
+			Abilities.id[Abilities.ITEM],
+			Abilities.id[Abilities.ESCAPE]
+		],
+		SPELLS:[
+			{}
+		]
+	},
 }
 
 

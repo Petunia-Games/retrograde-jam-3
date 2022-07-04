@@ -6,8 +6,8 @@ var map_scene = preload("res://Battle/Map/Map.tscn")
 func _ready() -> void:
 	Globals.encounter_id = 0
 	Globals.field_id = 0
-	Globals.current_party = [0,1,2]
-	#begin_battle()
+	Globals.current_party = [0]
+	begin_battle()
 	
 	
 func new_game() -> void:

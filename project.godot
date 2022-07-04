@@ -13,9 +13,21 @@ _global_script_classes=[ {
 "class": "BattleMember",
 "language": "GDScript",
 "path": "res://Battle/BattleMember.gd"
+}, {
+"base": "Node",
+"class": "Encounters",
+"language": "GDScript",
+"path": "res://Battle/Encounters.gd"
+}, {
+"base": "Node",
+"class": "Enemies",
+"language": "GDScript",
+"path": "res://Battle/Enemies.gd"
 } ]
 _global_script_class_icons={
-"BattleMember": ""
+"BattleMember": "",
+"Encounters": "",
+"Enemies": ""
 }
 
 [application]
@@ -29,7 +41,6 @@ config/icon="res://icon.png"
 PlayerParty="*res://PlayerParty.gd"
 Globals="*res://Globals.gd"
 BattleGlobals="*res://BattleGlobals.gd"
-Enemies="*res://Prototype/Battle/Enemies.gd"
 Events="*res://Events.gd"
 
 [display]

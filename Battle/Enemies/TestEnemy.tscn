@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Battle/Enemies/TestEnemy.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/Enemies/test_enemy.png" type="Texture" id=3]
+
+[node name="TestEnemy" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+member_name = "Test Enemy"
+sprite = ExtResource( 3 )
+is_enemy = true
+level = 1
+experience = 10
+max_hp = 50
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0

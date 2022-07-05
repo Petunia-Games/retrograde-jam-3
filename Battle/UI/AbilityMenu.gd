@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 
 
 # This function will cause issues
-func set_active_menu(menu, data: Dictionary = {}) -> void:
+func set_active_menu(menu, data) -> void:
 	previous_menu = active_menu
 	active_menu = menu
 	

@@ -1,22 +1,39 @@
 extends Control
 
-export(String) var member_name: String = ""
-export(int) var member_id
-export(Texture) var sprite
-export(bool) var is_dead = false
-export(bool) var stats_known = false
+var member_name: String = ""
+var member_id
+var sprite
+var is_dead = false
+var stats_known = false
 
-export(int) var level: int = 0
-export(int) var experience: int = 0
-export(int) var current_hp: int = 0
-export(int) var max_hp: int = 0
-export(int) var strength: int = 0
-export(int) var speed: int = 0
-export(int) var sorcery: int = 0
-export(int) var defense: int = 0
+var level: int = 0
+var exp_current: int = 0
+var exp_next: int = 0
+var hp_current: int = 0
+var hp_max: int = 0
+var strength: int = 0
+var speed: int = 0
+var sorcery: int = 0
+var defense: int = 0
 
-export(Array) var abilities: Array = []
+var abilities: Array = []
+var spells: Array = []
 
 
-func set_member_data_from_globals(member_id) -> void:
-	pass
+func set_member_data_from_globals(_id) -> void:
+	member_name = PlayerParty.id[str(_id)][PlayerParty.NAME]
+	member_id = _id
+	is_dead = PlayerParty.id[str(_id)][PlayerParty.IS_DEAD]
+	
+	level = PlayerParty.id[str(_id)][PlayerParty.LEVEL]
+	exp_current = PlayerParty.id[str(_id)][PlayerParty.EXP_CURRENT]
+	exp_next = PlayerParty.id[str(_id)][PlayerParty.EXP_NEXT]
+	hp_current = PlayerParty.id[str(_id)][PlayerParty.HP_CURRENT]
+	hp_max = PlayerParty.id[str(_id)][PlayerParty.HP_MAX]
+	strength = PlayerParty.id[str(_id)][PlayerParty.STRENGTH]
+	speed = PlayerParty.id[str(_id)][PlayerParty.SPEED]
+	sorcery = PlayerParty.id[str(_id)][PlayerParty.SORCERY]
+	defense = PlayerParty.id[str(_id)][PlayerParty.DEFENSE]
+	
+	abilities = PlayerParty.id[str(_id)][PlayerParty.ABILITIES]
+	spells = PlayerParty.id[str(_id)][PlayerParty.SPELLS]

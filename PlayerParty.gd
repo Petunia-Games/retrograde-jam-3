@@ -47,7 +47,7 @@ var id: Dictionary = {
 		IS_DEAD:false,
 	},
 	str(MELINDA):{
-		NAME:"Player2",
+		NAME:"Melinda",
 		LEVEL:5,
 		EXP_CURRENT:0,
 		EXP_NEXT:100,

@@ -11,9 +11,9 @@ func _ready() -> void:
 
 
 func set_data(member_data):
-	name_label.text = member_data[PlayerParty.NAME]
-	hp_current_label.text = str(member_data[PlayerParty.HP_CURRENT])
-	hp_max_label.text = str(member_data[PlayerParty.HP_MAX])
+	name_label.text = member_data.member_name
+	hp_current_label.text = str(member_data.hp_current)
+	hp_max_label.text = str(member_data.hp_max)
 
 
 func set_selected() -> void:

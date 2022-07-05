@@ -75,6 +75,11 @@ func _on_battle_ability_selected(ability) -> void:
 			var from = BattleGlobals.player_party[BattleGlobals.active_party_member_index]
 			var to = from
 			Events.emit_signal("battle_action_added", action, from, to)
+			if not BattleGlobals.is_everyone_in_turn_queue():
+				BattleGlobals.set_active_party_member()
+				Events.emit_signal("battle_member_changed")
+			else:
+				Events.emit_signal("battle_decision_phase_finished")
 		Abilities.SUBMENUS.SPELLS:
 			set_active_menu(sorcery_list, BattleGlobals.player_party[BattleGlobals.active_party_member_index])
 		Abilities.SUBMENUS.ITEMS:
@@ -95,3 +100,9 @@ func _on_battle_target_selected(action, target) -> void:
 	var from = BattleGlobals.player_party[BattleGlobals.active_party_member_index]
 	var to = target
 	Events.emit_signal("battle_action_added", action, from, to)
+	
+	if not BattleGlobals.is_everyone_in_turn_queue():
+		BattleGlobals.set_active_party_member()
+		Events.emit_signal("battle_member_changed")
+	else:
+		Events.emit_signal("battle_decision_phase_finished")

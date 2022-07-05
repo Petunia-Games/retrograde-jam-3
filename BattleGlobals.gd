@@ -44,5 +44,19 @@ func add_action_to_turn_queue(from, to, action) -> void:
 
 
 func set_active_party_member() -> void:
+	# This needs to be thought out some more
 	previous_party_member_index = active_party_member_index
 	active_party_member_index = (active_party_member_index + 1) % player_party.size()
+	if player_party[active_party_member_index].is_dead:
+		pass
+
+func is_everyone_in_turn_queue() -> bool:
+	for member in player_party:
+		if not member.is_dead:
+			if not member in turn_queue:
+				return false
+	for member in enemy_party:
+		if not member.is_dead:
+			if not member in turn_queue:
+				return false
+	return true

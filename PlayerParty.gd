@@ -44,7 +44,7 @@ var id: Dictionary = {
 		SPELLS:[
 			{}
 		],
-		IS_DEAD:false,
+		IS_DEAD:true,
 	},
 	str(MELINDA):{
 		NAME:"Melinda",

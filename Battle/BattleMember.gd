@@ -1,5 +1,8 @@
 extends Control
 
+onready var pointer_anim: AnimationPlayer = $PointerAnimationPlayer
+onready var member_anim: AnimationPlayer = $MemberAnimationPlayer
+
 var member_name: String = ""
 var member_id
 var sprite
@@ -17,6 +20,10 @@ var defense: int = 0
 
 var abilities: Array = []
 var spells: Array = []
+
+
+func _ready() -> void:
+	pointer_anim.play("Deselected")
 
 
 func set_member_data_from_globals(_id) -> void:
@@ -39,11 +46,11 @@ func set_member_data_from_globals(_id) -> void:
 
 
 func set_selected() -> void:
-	pass
+	pointer_anim.play("Selected")
 	
 	
 func set_deselected() -> void:
-	pass
+	pointer_anim.play("Deselected")
 	
 	
 func modify_hp(amount, is_damage: bool = true) -> void:

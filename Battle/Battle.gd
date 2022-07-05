@@ -31,6 +31,8 @@ func set_party_members() -> void:
 		battle_member_list.add_player(battle_member)
 		BattleGlobals.player_party.append(battle_member)
 		battle_member.set_member_data_from_globals(member)
+	
+	BattleGlobals.set_active_party_member()
 
 
 func _on_battle_started() -> void:

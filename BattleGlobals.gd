@@ -5,8 +5,8 @@ var enemy_party: Array = []
 
 var enemy_stats_known = []
 
-var active_party_member_index = 0
-var previous_party_member_index = 0
+var active_party_member_index = null
+var previous_party_member_index = null
 var turn_number: int = 1
 var turn_queue: Array = []
 
@@ -14,8 +14,8 @@ var turn_queue: Array = []
 func clear() -> void:
 	player_party.clear()
 	enemy_party.clear()
-	active_party_member_index = 0
-	previous_party_member_index = 0
+	active_party_member_index = null
+	previous_party_member_index = null
 	turn_number = 1
 	turn_queue.clear()
 
@@ -45,10 +45,20 @@ func add_action_to_turn_queue(from, to, action) -> void:
 
 func set_active_party_member() -> void:
 	# This needs to be thought out some more
-	previous_party_member_index = active_party_member_index
-	active_party_member_index = (active_party_member_index + 1) % player_party.size()
-	if player_party[active_party_member_index].is_dead:
-		pass
+	if active_party_member_index == null:
+		for member in player_party.size():
+			if not player_party[member].is_dead:
+				active_party_member_index = member
+	else:
+		previous_party_member_index = active_party_member_index
+		player_party[previous_party_member_index].set_deselected()
+		
+		active_party_member_index = (active_party_member_index + 1) % player_party.size()
+		if player_party[active_party_member_index].is_dead:
+			set_active_party_member()
+	
+	player_party[active_party_member_index].set_selected()
+
 
 func is_everyone_in_turn_queue() -> bool:
 	for member in player_party:

@@ -14,6 +14,7 @@ signal battle_action_phase_finished(msg)
 signal battle_submenu_added(msg)
 signal battle_submenu_removed(msg)
 signal battle_submenu_cancelled(msg)
+signal battle_submenu_item_changed(msg)
 
 signal battle_member_changed(msg)
 

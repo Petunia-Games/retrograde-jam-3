@@ -22,4 +22,6 @@ func set_selected() -> void:
 
 
 func set_deselected() -> void:
+	if BattleGlobals.previous_party_member_index == null:
+		return
 	get_child(BattleGlobals.previous_party_member_index).set_deselected()

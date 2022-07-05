@@ -10,6 +10,16 @@ var previous_party_member_index = 0
 var turn_number: int = 1
 var turn_queue: Array = []
 
+
+func clear() -> void:
+	player_party.clear()
+	enemy_party.clear()
+	active_party_member_index = 0
+	previous_party_member_index = 0
+	turn_number = 1
+	turn_queue.clear()
+
+
 func add_player_member(member) -> void:
 	player_party.append(member)
 	

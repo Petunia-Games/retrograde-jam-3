@@ -120,5 +120,5 @@ func remove_from_party(value) -> void:
 	current_party.remove(value)
 	
 
-func level_up_member(member) -> void:
+func level_up_member(_member) -> void:
 	pass

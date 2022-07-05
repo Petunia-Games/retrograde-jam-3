@@ -21,3 +21,5 @@ signal battle_ability_selected(msg)
 signal battle_spell_selected(msg)
 signal battle_item_selected(msg)
 signal battle_target_selected(msg)
+
+signal battle_action_added(msg)

@@ -15,6 +15,9 @@ var previous_menu
 func _ready() -> void:
 	Events.connect("battle_ability_selected", self, "_on_battle_ability_selected")
 	Events.connect("battle_spell_selected", self, "_on_battle_spell_selected")
+	Events.connect("battle_item_selected", self, "_on_battle_item_selected")
+	Events.connect("battle_target_selected", self, "_on_battle_target_selected")
+	Events.connect("battle_submenu_cancelled", self, "_on_battle_submenu_cancelled")
 
 
 func _process(delta: float) -> void:
@@ -61,10 +64,17 @@ func hide_submenu() -> void:
 			child.visible = false
 
 
+func _on_battle_submenu_cancelled() -> void:
+	pass
+
+
 func _on_battle_ability_selected(ability) -> void:
 	match ability.ability_submenu:
 		Abilities.SUBMENUS.NONE:
-			pass
+			var action = ability
+			var from = BattleGlobals.player_party[BattleGlobals.active_party_member_index]
+			var to = from
+			Events.emit_signal("battle_action_added", action, from, to)
 		Abilities.SUBMENUS.SPELLS:
 			set_active_menu(sorcery_list, BattleGlobals.player_party[BattleGlobals.active_party_member_index])
 		Abilities.SUBMENUS.ITEMS:
@@ -75,3 +85,13 @@ func _on_battle_ability_selected(ability) -> void:
 
 func _on_battle_spell_selected(spell) -> void:
 	set_active_menu(target_list, {})
+
+
+func _on_battle_item_selected(item) -> void:
+	set_active_menu(target_list, {})
+	
+	
+func _on_battle_target_selected(action, target) -> void:
+	var from = BattleGlobals.player_party[BattleGlobals.active_party_member_index]
+	var to = target
+	Events.emit_signal("battle_action_added", action, from, to)

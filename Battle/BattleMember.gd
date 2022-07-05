@@ -4,7 +4,6 @@ var member_name: String = ""
 var member_id
 var sprite
 var is_dead = false
-var stats_known = false
 
 var level: int = 0
 var exp_current: int = 0

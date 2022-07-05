@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://Sprites/test_player.png" type="Texture" id=1]
 [ext_resource path="res://Battle/BattleMember.gd" type="Script" id=2]
 
 [node name="BattleMember" type="Control"]
@@ -12,3 +13,4 @@ script = ExtResource( 2 )
 [node name="Sprite" type="TextureRect" parent="."]
 margin_right = 8.0
 margin_bottom = 8.0
+texture = ExtResource( 1 )

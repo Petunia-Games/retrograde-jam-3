@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Battle/UI/UI.gd" type="Script" id=1]
 [ext_resource path="res://Battle/UI/SubMenu.gd" type="Script" id=2]
@@ -7,9 +7,28 @@
 [ext_resource path="res://Battle/Battle.gd" type="Script" id=5]
 [ext_resource path="res://Battle/UI/AbilityList.gd" type="Script" id=6]
 [ext_resource path="res://Sprites/UI/TextboxBorder.png" type="Texture" id=7]
+[ext_resource path="res://Battle/BattleMembers.gd" type="Script" id=8]
 
 [node name="Battle" type="Node"]
 script = ExtResource( 5 )
+
+[node name="BattleMembers" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 21.0
+margin_bottom = -79.0
+script = ExtResource( 8 )
+
+[node name="EnemyList" type="VBoxContainer" parent="BattleMembers"]
+margin_right = 126.0
+margin_bottom = 140.0
+size_flags_horizontal = 3
+
+[node name="PlayerList" type="VBoxContainer" parent="BattleMembers"]
+margin_left = 130.0
+margin_right = 256.0
+margin_bottom = 140.0
+size_flags_horizontal = 3
 
 [node name="UI" type="VBoxContainer" parent="."]
 anchor_right = 1.0

@@ -1,5 +1,8 @@
 extends Node
 
+onready var battle_member_list: HBoxContainer = $BattleMembers
+
+
 var battle_member_scene = preload("res://Battle/BattleMember.tscn")
 
 enum {
@@ -25,9 +28,9 @@ func set_enemies_from_encounter_id(enc_id) -> void:
 func set_party_members() -> void:
 	for member in Globals.current_party:
 		var battle_member = battle_member_scene.instance()
+		battle_member_list.add_player(battle_member)
 		BattleGlobals.player_party.append(battle_member)
 		battle_member.set_member_data_from_globals(member)
-	BattleGlobals.active_party_member_index = 0
 
 
 func _on_battle_started() -> void:

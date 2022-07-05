@@ -1,7 +1,7 @@
 extends GridContainer
 
 var item_scene = preload("res://Battle/UI/Item.tscn")
-
+var selected_item_index = 0
 
 func process_input() -> void:
 	if Input.is_action_just_pressed("up"):
@@ -28,11 +28,13 @@ func add_item_to_list(item_data) -> void:
 	item.set_data(item_data)
 
 
-func populate_list(item_data) -> void:
+func populate_list(item_data: Dictionary) -> void:
 	clear_list()
 	for item in item_data:
-		add_item_to_list(item)
+		var new_data = {str(item):PlayerParty.items[item]}
+		add_item_to_list(new_data)
 
+	get_child(selected_item_index).set_selected()
 
 func clear_list() -> void:
 	for child in get_children():

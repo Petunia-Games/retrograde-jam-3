@@ -20,6 +20,7 @@ const ABILITIES = "abilities"
 const SPELLS = "spells"
 const SPELL_POINTS_CURRENT = "spell_points_current"
 const SPELL_POINTS_MAX = "spell_points_max"
+const ITEM_QUANTITY = "item_quantity"
 
 
 var id: Dictionary = {
@@ -99,7 +100,12 @@ var id: Dictionary = {
 
 
 var items: Dictionary = {
-	
+	str(Items.POTION):{
+		ITEM_QUANTITY:5
+	},
+	str(Items.TEST):{
+		ITEM_QUANTITY:5
+	}
 }
 
 

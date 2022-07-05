@@ -20,6 +20,7 @@ const ABILITIES = "abilities"
 const SPELLS = "spells"
 const SPELL_POINTS_CURRENT = "spell_points_current"
 const SPELL_POINTS_MAX = "spell_points_max"
+const IS_DEAD = "is_dead"
 const ITEM_QUANTITY = "item_quantity"
 
 
@@ -42,7 +43,8 @@ var id: Dictionary = {
 		],
 		SPELLS:[
 			{}
-		]
+		],
+		IS_DEAD:false,
 	},
 	str(MELINDA):{
 		NAME:"Player2",
@@ -94,7 +96,8 @@ var id: Dictionary = {
 				SPELL_POINTS_CURRENT:5,
 				SPELL_POINTS_MAX:5
 			}},
-		]
+		],
+		IS_DEAD:false,
 	},
 }
 

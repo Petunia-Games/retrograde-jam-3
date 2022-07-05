@@ -24,8 +24,9 @@ func set_enemies_from_encounter_id(enc_id) -> void:
 
 func set_party_members() -> void:
 	for member in Globals.current_party:
-		BattleGlobals.player_party.append(member)
-
+		var battle_member = battle_member_scene.instance()
+		BattleGlobals.player_party.append(battle_member)
+		battle_member.set_member_data_from_globals(member)
 	BattleGlobals.active_party_member_index = 0
 
 

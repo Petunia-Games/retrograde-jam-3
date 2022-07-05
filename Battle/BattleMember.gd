@@ -1,4 +1,3 @@
-class_name BattleMember
 extends Control
 
 export(String) var member_name: String = ""
@@ -17,3 +16,7 @@ export(int) var sorcery: int = 0
 export(int) var defense: int = 0
 
 export(Array) var abilities: Array = []
+
+
+func set_member_data_from_globals(member_id) -> void:
+	pass

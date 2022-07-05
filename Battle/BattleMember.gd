@@ -36,3 +36,15 @@ func set_member_data_from_globals(_id) -> void:
 	
 	abilities = PlayerParty.id[str(_id)][PlayerParty.ABILITIES]
 	spells = PlayerParty.id[str(_id)][PlayerParty.SPELLS]
+
+
+func set_selected() -> void:
+	pass
+	
+	
+func set_deselected() -> void:
+	pass
+	
+	
+func modify_hp(amount, is_damage: bool = true) -> void:
+	pass

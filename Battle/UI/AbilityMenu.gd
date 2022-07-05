@@ -69,7 +69,7 @@ func _on_battle_submenu_cancelled() -> void:
 
 
 func _on_battle_ability_selected(ability) -> void:
-	match ability.ability_submenu:
+	match ability.submenu:
 		Abilities.SUBMENUS.NONE:
 			var action = ability
 			var from = BattleGlobals.player_party[BattleGlobals.active_party_member_index]

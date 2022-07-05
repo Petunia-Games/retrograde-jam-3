@@ -2,7 +2,7 @@ extends Node
 
 enum {
 	POTION,
-	TEST
+	AETHER
 }
 
 const NAME = "name"
@@ -11,10 +11,10 @@ const DESCRIPTION = "description"
 var id: Dictionary = {
 	str(POTION):{
 		NAME:"Potion",
-		DESCRIPTION:"Heals 100HP."
+		DESCRIPTION:"Restores 100HP."
 	},
-	str(TEST):{
-		NAME:"Test",
-		DESCRIPTION:"Test item."
+	str(AETHER):{
+		NAME:"Aether",
+		DESCRIPTION:"Restores Sorcery."
 	}
 }

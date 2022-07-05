@@ -49,6 +49,7 @@ func set_active_party_member() -> void:
 		for member in player_party.size():
 			if not player_party[member].is_dead:
 				active_party_member_index = member
+				break
 	else:
 		previous_party_member_index = active_party_member_index
 		player_party[previous_party_member_index].set_deselected()

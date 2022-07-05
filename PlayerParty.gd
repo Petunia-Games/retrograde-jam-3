@@ -44,7 +44,7 @@ var id: Dictionary = {
 		SPELLS:[
 			{}
 		],
-		IS_DEAD:true,
+		IS_DEAD:false,
 	},
 	str(MELINDA):{
 		NAME:"Melinda",
@@ -68,31 +68,31 @@ var id: Dictionary = {
 				SPELL_POINTS_CURRENT:5,
 				SPELL_POINTS_MAX:5
 			}},
-			{str(Spells.FIRE):{
+			{str(Spells.THUNDER):{
 				SPELL_POINTS_CURRENT:5,
 				SPELL_POINTS_MAX:5
 			}},
-			{str(Spells.FIRE):{
+			{str(Spells.ICE):{
 				SPELL_POINTS_CURRENT:5,
 				SPELL_POINTS_MAX:5
 			}},
-			{str(Spells.FIRE):{
+			{str(Spells.WATER):{
 				SPELL_POINTS_CURRENT:5,
 				SPELL_POINTS_MAX:5
 			}},
-			{str(Spells.FIRE):{
+			{str(Spells.POISON):{
 				SPELL_POINTS_CURRENT:5,
 				SPELL_POINTS_MAX:5
 			}},
-			{str(Spells.FIRE):{
+			{str(Spells.CURSE):{
 				SPELL_POINTS_CURRENT:5,
 				SPELL_POINTS_MAX:5
 			}},
-			{str(Spells.FIRE):{
+			{str(Spells.SEER):{
 				SPELL_POINTS_CURRENT:5,
 				SPELL_POINTS_MAX:5
 			}},
-			{str(Spells.FIRE):{
+			{str(Spells.NOVA):{
 				SPELL_POINTS_CURRENT:5,
 				SPELL_POINTS_MAX:5
 			}},
@@ -106,8 +106,8 @@ var items: Dictionary = {
 	str(Items.POTION):{
 		ITEM_QUANTITY:5
 	},
-	str(Items.TEST):{
-		ITEM_QUANTITY:5
+	str(Items.AETHER):{
+		ITEM_QUANTITY:2
 	}
 }
 

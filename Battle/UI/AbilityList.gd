@@ -1,3 +1,4 @@
+# AbilityList.gd
 extends NinePatchRect
 
 onready var list: VBoxContainer = $VBoxContainer

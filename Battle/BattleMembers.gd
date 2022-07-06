@@ -1,3 +1,4 @@
+# Battle/BattleMembers.gd
 extends HBoxContainer
 
 onready var player_list: VBoxContainer = $PlayerList

@@ -1,4 +1,9 @@
+# Globals/BattleGlobals.gd
 extends Node
+
+const FROM = "from"
+const TO = "to"
+const ACTION = "action"
 
 var player_party: Array = []
 var enemy_party: Array = []
@@ -38,8 +43,8 @@ func remove_enemy_member(member_index) -> void:
 	enemy_party.remove(member_index)
 
 
-func add_action_to_turn_queue(from, to, action) -> void:
-	var turn: Array = [from, to, action]
+func add_action_to_turn_queue(action, from, to) -> void:
+	var turn: Dictionary = {FROM:from, TO:to, ACTION:action}
 	turn_queue.append(turn)
 
 
@@ -49,7 +54,7 @@ func set_active_party_member() -> void:
 		for member in player_party.size():
 			if not player_party[member].is_dead:
 				active_party_member_index = member
-				break
+				player_party[active_party_member_index].set_selected()
 	else:
 		previous_party_member_index = active_party_member_index
 		player_party[previous_party_member_index].set_deselected()
@@ -57,17 +62,22 @@ func set_active_party_member() -> void:
 		active_party_member_index = (active_party_member_index + 1) % player_party.size()
 		if player_party[active_party_member_index].is_dead:
 			set_active_party_member()
-	
-	player_party[active_party_member_index].set_selected()
+		else:
+			for turn in turn_queue:
+				if not player_party[active_party_member_index] == turn[FROM]:
+					player_party[active_party_member_index].set_selected()
+		
 
 
 func is_everyone_in_turn_queue() -> bool:
 	for member in player_party:
 		if not member.is_dead:
-			if not member in turn_queue:
-				return false
+			for turn in turn_queue:
+				if not member in turn[FROM]:
+					return false
 	for member in enemy_party:
 		if not member.is_dead:
-			if not member in turn_queue:
-				return false
+			for turn in turn_queue:
+				if not member in turn[FROM]:
+					return false
 	return true

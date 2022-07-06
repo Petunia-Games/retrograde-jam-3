@@ -1,3 +1,4 @@
+# Textbox.gd
 extends NinePatchRect
 
 onready var textbox_label: Label = $TextboxLabel

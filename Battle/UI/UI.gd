@@ -1,3 +1,4 @@
+# UI.gd
 extends VBoxContainer
 
 onready var ability_menu: HBoxContainer = $AbilityMenu
@@ -25,3 +26,4 @@ func _on_battle_member_changed() -> void:
 	
 func _on_battle_submenu_item_changed(submenu_item) -> void:
 	textbox.set_text(submenu_item.description)
+	Events.emit_signal("audio_sfx_started", Audio.id["0"])

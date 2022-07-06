@@ -1,3 +1,4 @@
+# PlayerPartyList.gd
 extends VBoxContainer
 
 var member_scene = preload("res://Battle/UI/Member.tscn")

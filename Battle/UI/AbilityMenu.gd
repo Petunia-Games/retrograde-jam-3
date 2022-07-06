@@ -1,3 +1,4 @@
+# AbilityMenu.gd
 extends HBoxContainer
 
 onready var ability_list: NinePatchRect = $AbilityList

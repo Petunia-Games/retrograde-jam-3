@@ -1,3 +1,4 @@
+# ItemList.gd
 extends GridContainer
 
 var item_scene = preload("res://Battle/UI/Item.tscn")

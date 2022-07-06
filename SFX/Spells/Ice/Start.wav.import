@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Start.wav-dc3e160d87941425c98384741a17eda9.sample"
+
+[deps]
+
+source_file="res://SFX/Spells/Ice/Start.wav"
+dest_files=[ "res://.import/Start.wav-dc3e160d87941425c98384741a17eda9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

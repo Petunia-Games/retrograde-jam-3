@@ -1,7 +1,7 @@
 extends Node
-
 # Global bus used to connect signals between nodes
 
+# Battle
 signal battle_started(msg)
 signal battle_finished(msg)
 
@@ -27,3 +27,11 @@ signal battle_action_added(msg)
 
 signal battle_won(msg)
 signal battle_lost(msg)
+
+
+# Audio
+signal audio_music_started(msg)
+signal audio_music_finished(msg)
+
+signal audio_sfx_started(msg)
+signal audio_sfx_finished(msg)

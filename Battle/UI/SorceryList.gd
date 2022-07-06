@@ -1,3 +1,4 @@
+# SorceryList.gd
 extends GridContainer
 
 var spell_scene = preload("res://Battle/UI/Spell.tscn")

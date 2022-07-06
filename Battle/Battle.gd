@@ -1,3 +1,4 @@
+# Battle/Battle.gd
 extends Node
 
 onready var battle_member_list: HBoxContainer = $BattleMembers

@@ -1,4 +1,6 @@
+# Game.gd
 extends Node
+
 
 var battle_scene = preload("res://Battle/Battle.tscn")
 var map_scene = preload("res://Battle/Map/Map.tscn")

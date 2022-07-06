@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/End.wav-88e68fdf7e91bf37eb8149c304c5100e.sample"
+
+[deps]
+
+source_file="res://SFX/Spells/Ice/End.wav"
+dest_files=[ "res://.import/End.wav-88e68fdf7e91bf37eb8149c304c5100e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

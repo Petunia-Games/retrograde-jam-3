@@ -19,10 +19,14 @@ func clear_list() -> void:
 
 func set_selected() -> void:
 	set_deselected()
-	get_child(BattleGlobals.active_party_member_index).set_selected()
+	for child in get_children():
+		if child.member_name == BattleGlobals.active_player_party_members[BattleGlobals.active_party_member_index].member_name:
+			child.set_selected()
 
 
 func set_deselected() -> void:
 	if BattleGlobals.previous_party_member_index == null:
 		return
-	get_child(BattleGlobals.previous_party_member_index).set_deselected()
+	for child in get_children():
+		if child.member_name == BattleGlobals.active_player_party_members[BattleGlobals.previous_party_member_index].member_name:
+			child.set_deselected()

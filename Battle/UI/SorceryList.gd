@@ -22,7 +22,6 @@ func process_input() -> void:
 		Events.emit_signal("battle_submenu_cancelled")
 	elif Input.is_action_just_pressed("select"):
 		get_child(selected_spell_index).set_deselected()
-		BattleGlobals.set_active_party_member()
 		Events.emit_signal("battle_member_changed")
 
 

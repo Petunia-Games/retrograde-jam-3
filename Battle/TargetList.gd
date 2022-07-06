@@ -1,3 +1,4 @@
+# Battle/TargetList.gd
 extends VBoxContainer
 
 
@@ -16,7 +17,6 @@ func process_input() -> void:
 	elif Input.is_action_just_pressed("cancel"):
 		Events.emit_signal("battle_submenu_cancelled")
 	elif Input.is_action_just_pressed("select"):
-		BattleGlobals.set_active_party_member()
 		Events.emit_signal("battle_member_changed")
 
 

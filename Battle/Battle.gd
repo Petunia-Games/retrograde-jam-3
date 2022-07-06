@@ -32,8 +32,10 @@ func set_party_members() -> void:
 		battle_member_list.add_player(battle_member)
 		BattleGlobals.player_party.append(battle_member)
 		battle_member.set_member_data_from_globals(member)
+		if not battle_member.is_dead:
+			BattleGlobals.active_player_party_members.append(battle_member)
 	
-	BattleGlobals.set_active_party_member()
+	BattleGlobals.set_next_active_party_member()
 
 
 func _on_battle_started() -> void:

@@ -14,12 +14,13 @@ func _ready() -> void:
 
 
 func _on_decision_phase_started() -> void:
-	ability_menu.set_active_menu(ability_menu.ability_list, BattleGlobals.player_party[BattleGlobals.active_party_member_index])
+	ability_menu.set_active_menu(ability_menu.ability_list, BattleGlobals.active_player_party_members[BattleGlobals.active_party_member_index])
 	ability_menu.change_party_member()
 
 
 func _on_battle_member_changed() -> void:
-	ability_menu.set_active_menu(ability_menu.ability_list, BattleGlobals.player_party[BattleGlobals.active_party_member_index])
+	BattleGlobals.set_next_active_party_member()
+	ability_menu.set_active_menu(ability_menu.ability_list, BattleGlobals.active_player_party_members[BattleGlobals.active_party_member_index])
 	ability_menu.change_party_member()
 	textbox.hide_textbox()
 	

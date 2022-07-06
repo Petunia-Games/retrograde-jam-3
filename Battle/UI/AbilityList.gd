@@ -15,7 +15,6 @@ func process_input() -> void:
 	if Input.is_action_just_pressed("confirm"):
 		Events.emit_signal("battle_ability_selected", list.get_child(selected_ability_index))
 	elif Input.is_action_just_pressed("select"):
-		BattleGlobals.set_active_party_member()
 		Events.emit_signal("battle_member_changed")
 		
 		

@@ -37,18 +37,17 @@ func add_target_to_list(target_data) -> void:
 func populate_list(ability) -> void:
 	clear_list()
 	
-	for target in BattleGlobals.enemy_party:
-		current_target_list = enemy_target_list
-		add_target_to_list(target)
-	for target in BattleGlobals.player_party:
-		current_target_list = player_target_list
-		add_target_to_list(target)
-	
 	match ability.type:
 		Abilities.ABILITY_TYPE.OFFENSIVE:
 			current_target_list = enemy_target_list
+			for target in BattleGlobals.enemy_party:
+				current_target_list = enemy_target_list
+				add_target_to_list(target)
 		Abilities.ABILITY_TYPE.DEFENSIVE:
 			current_target_list = player_target_list
+			for target in BattleGlobals.player_party:
+				current_target_list = player_target_list
+				add_target_to_list(target)
 			
 	selected_target_index = 0
 	current_target_list.get_child(selected_target_index).set_selected()

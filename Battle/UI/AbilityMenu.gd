@@ -86,15 +86,15 @@ func _on_battle_ability_selected(ability) -> void:
 		Abilities.SUBMENUS.ITEMS:
 			set_active_menu(item_list, PlayerParty.items)
 		Abilities.SUBMENUS.TARGETS:
-			set_active_menu(target_list, {})
+			set_active_menu(target_list, ability)
 
 
 func _on_battle_spell_selected(spell) -> void:
-	set_active_menu(target_list, {})
+	set_active_menu(target_list, spell)
 
 
 func _on_battle_item_selected(item) -> void:
-	set_active_menu(target_list, {})
+	set_active_menu(target_list, item)
 	
 	
 func _on_battle_target_selected(action, target) -> void:
@@ -103,7 +103,6 @@ func _on_battle_target_selected(action, target) -> void:
 	Events.emit_signal("battle_action_added", action, from, to)
 	
 	if not BattleGlobals.is_everyone_in_turn_queue():
-		BattleGlobals.set_active_party_member()
 		Events.emit_signal("battle_member_changed")
 	else:
 		Events.emit_signal("battle_decision_phase_finished")

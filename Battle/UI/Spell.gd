@@ -7,6 +7,7 @@ onready var spell_uses_max: Label = $UsesHBox/SpellMaxUsesLabel
 
 var spell_name: String = ""
 var description: String = ""
+var type: int
 var uses_remaining: String = ""
 var uses_max: String = ""
 
@@ -21,6 +22,7 @@ func set_data(spell_data: Dictionary) -> void:
 	uses_remaining = str(spell_data[spell_id[0]][PlayerParty.SPELL_POINTS_CURRENT])
 	uses_max = str(spell_data[spell_id[0]][PlayerParty.SPELL_POINTS_MAX])
 	description = Spells.id[spell_id[0]][Spells.DESCRIPTION]
+	type = Spells.id[spell_id[0]][Spells.TYPE]
 	
 	spell_name_label.text = spell_name
 	spell_uses_remaining.text = uses_remaining

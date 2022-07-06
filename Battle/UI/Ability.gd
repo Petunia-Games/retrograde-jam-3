@@ -5,12 +5,14 @@ onready var ability_label: Label = $AbilityLabel
 
 var ability_name = ""
 var description = ""
+var type = ""
 var submenu
 
 
 func set_data(ability_data) -> void:
 	ability_name = ability_data[Abilities.NAME]
 	description = ability_data[Abilities.DESCRIPTION]
+	type = ability_data[Abilities.TYPE]
 	submenu = ability_data[Abilities.SUBMENU]
 	
 	ability_label.text = ability_name

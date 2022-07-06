@@ -42,6 +42,7 @@ func populate_list(item_data: Dictionary) -> void:
 
 	get_child(selected_item_index).set_selected()
 
+
 func clear_list() -> void:
 	for child in get_children():
 		child.free()

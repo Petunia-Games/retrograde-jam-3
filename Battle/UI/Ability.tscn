@@ -11,7 +11,7 @@ script = ExtResource( 1 )
 
 [node name="Pointer" type="TextureRect" parent="."]
 visible = false
-margin_right = 12.0
+margin_right = 4.0
 margin_bottom = 14.0
 texture = ExtResource( 2 )
 

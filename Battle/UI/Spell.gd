@@ -2,8 +2,8 @@ extends HBoxContainer
 
 onready var pointer: TextureRect = $Pointer
 onready var spell_name_label: Label = $SpellNameLabel
-onready var spell_uses_remaining: Label = $SpellUsesLabel
-onready var spell_uses_max: Label = $SpellMaxUsesLabel
+onready var spell_uses_remaining: Label = $UsesHBox/SpellUsesLabel
+onready var spell_uses_max: Label = $UsesHBox/SpellMaxUsesLabel
 
 var spell_name: String = ""
 var description: String = ""

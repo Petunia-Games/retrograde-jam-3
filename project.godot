@@ -16,16 +16,16 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Globals="*res://Globals.gd"
-Abilities="*res://Battle/Abilities.gd"
-Spells="*res://Battle/Spells.gd"
+Globals="*res://Globals/Globals.gd"
+Abilities="*res://Globals/Abilities.gd"
+Spells="*res://Globals/Spells.gd"
 Items="*res://Items.gd"
 Audio="*res://Globals/Audio.gd"
-BattleGlobals="*res://BattleGlobals.gd"
-PlayerParty="*res://PlayerParty.gd"
-Events="*res://Events.gd"
-Enemies="*res://Battle/Enemies.gd"
-Encounters="*res://Battle/Encounters.gd"
+BattleGlobals="*res://Globals/BattleGlobals.gd"
+PlayerParty="*res://Globals/PlayerParty.gd"
+Events="*res://Globals/Events.gd"
+Enemies="*res://Globals/Enemies.gd"
+Encounters="*res://Globals/Encounters.gd"
 
 [debug]
 

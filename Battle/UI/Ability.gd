@@ -1,3 +1,4 @@
+# Battle/UI/Ability.gd
 extends HBoxContainer
 
 onready var pointer: TextureRect = $Pointer
@@ -20,7 +21,6 @@ func set_data(ability_data) -> void:
 	
 func set_selected() -> void:
 	pointer.visible = true
-	Events.emit_signal("audio_sfx_started", Audio.id["0"])
 	
 	
 func set_deselected() -> void:

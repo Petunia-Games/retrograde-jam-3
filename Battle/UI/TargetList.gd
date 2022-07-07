@@ -14,13 +14,9 @@ var to
 
 func process_input() -> void:
 	if Input.is_action_just_pressed("up"):
-		pass
+		Events.emit_signal("audio_sfx_started", Audio.id[str(Audio.MOVE_CURSOR)])
 	elif Input.is_action_just_pressed("down"):
-		pass
-	elif Input.is_action_just_pressed("left"):
-		pass
-	elif Input.is_action_just_pressed("right"):
-		pass
+		Events.emit_signal("audio_sfx_started", Audio.id[str(Audio.MOVE_CURSOR)])
 	
 	if Input.is_action_just_pressed("confirm"):
 		to = current_target_list.get_child(selected_target_index)

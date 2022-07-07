@@ -10,7 +10,7 @@ func _ready() -> void:
 	
 	
 func _on_audio_music_started(track_id) -> void:
-	music_player.stream = track_id
+	music_player.stream = load(track_id)
 	music_player.play()
 	
 	

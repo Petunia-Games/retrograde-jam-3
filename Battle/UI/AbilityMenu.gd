@@ -10,10 +10,10 @@ var item_list = preload("res://Battle/UI/ItemList.tscn").instance()
 var target_list = preload("res://Battle/UI/TargetList.tscn").instance()
 
 var active_menu
-var previous_menu
-
+var previous_menus: Array = []
 
 func _ready() -> void:
+	previous_menus = []
 	Events.connect("battle_ability_selected", self, "_on_battle_ability_selected")
 	Events.connect("battle_spell_selected", self, "_on_battle_spell_selected")
 	Events.connect("battle_item_selected", self, "_on_battle_item_selected")
@@ -28,10 +28,12 @@ func _process(delta: float) -> void:
 
 # This function will cause issues
 func set_active_menu(menu, data) -> void:
-	previous_menu = active_menu
+	if active_menu != target_list:
+		previous_menus.append(active_menu)
 	active_menu = menu
 	
 	if active_menu == ability_list:
+		previous_menus.clear()
 		if not party_list in ability_submenu.get_children():
 			hide_submenu()
 			ability_submenu.add_child(party_list)
@@ -59,6 +61,7 @@ func remove_active_menu() -> void:
 
 func change_party_member() -> void:
 	party_list.set_selected()
+	previous_menus.clear()
 
 
 func hide_submenu() -> void:
@@ -70,7 +73,17 @@ func hide_submenu() -> void:
 
 
 func _on_battle_submenu_cancelled() -> void:
-	pass
+	var previous_menu = previous_menus.pop_back()
+	var data
+	match previous_menu:
+		ability_list:
+			data = BattleGlobals.active_player_party_members[BattleGlobals.active_party_member_index]
+		sorcery_list:
+			data = BattleGlobals.active_player_party_members[BattleGlobals.active_party_member_index]
+		item_list:
+			data = PlayerParty.items
+
+	set_active_menu(previous_menu, data)
 
 
 func _on_battle_ability_selected(ability) -> void:
@@ -98,3 +111,4 @@ func _on_battle_item_selected(item) -> void:
 	
 func _on_battle_target_selected(action, from, to) -> void:
 	Events.emit_signal("battle_player_action_added", action, from, to)
+	previous_menus.clear()

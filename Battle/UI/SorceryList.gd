@@ -8,12 +8,16 @@ var current_column = 0
 func process_input() -> void:
 	if Input.is_action_just_pressed("up"):
 		select_previous_spell_in_column()
+		Events.emit_signal("audio_sfx_started", Audio.id[str(Audio.MOVE_CURSOR)])
 	elif Input.is_action_just_pressed("down"):
 		select_next_spell_in_column()
+		Events.emit_signal("audio_sfx_started", Audio.id[str(Audio.MOVE_CURSOR)])
 	elif Input.is_action_just_pressed("left"):
 		change_column()
+		Events.emit_signal("audio_sfx_started", Audio.id[str(Audio.MOVE_CURSOR)])
 	elif Input.is_action_just_pressed("right"):
 		change_column()
+		Events.emit_signal("audio_sfx_started", Audio.id[str(Audio.MOVE_CURSOR)])
 	
 	if Input.is_action_just_pressed("confirm"):
 		Events.emit_signal("battle_spell_selected", get_child(selected_spell_index))

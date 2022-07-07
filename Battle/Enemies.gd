@@ -18,7 +18,7 @@ const ABILITIES = "abilities"
 const ITEMS = "items"
 
 
-var enemy_list = {
+var id = {
 	str(TEST):{
 		NAME:"Test",
 		LEVEL:1,
@@ -28,5 +28,7 @@ var enemy_list = {
 		SPEED:3,
 		SORCERY:2,
 		DEFENSE:1,
+		ABILITIES:[{}],
+		ITEMS:[{}]
 	}
 }

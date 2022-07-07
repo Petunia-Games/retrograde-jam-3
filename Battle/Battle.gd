@@ -4,7 +4,8 @@ extends Node
 onready var battle_member_list: HBoxContainer = $BattleMembers
 
 
-var battle_member_scene = preload("res://Battle/BattleMember.tscn")
+var player_member_scene = preload("res://Battle/BattleMember.tscn")
+var enemy_member_scene = preload("res://Battle/EnemyMember.tscn")
 
 enum {
 	DECISION_PHASE,
@@ -23,12 +24,15 @@ func _ready() -> void:
 
 func set_enemies_from_encounter_id(enc_id) -> void:
 	for enemy_id in Encounters.id[str(enc_id)]:
-		BattleGlobals.enemy_party.append(Enemies.enemy_list[str(enemy_id)])
-
+		var enemy_member = enemy_member_scene.instance()
+		battle_member_list.add_enemy(enemy_member)
+		BattleGlobals.enemy_party.append(enemy_member)
+		enemy_member.set_member_data_from_globals(enemy_id)
+		
 
 func set_party_members() -> void:
 	for member in Globals.current_party:
-		var battle_member = battle_member_scene.instance()
+		var battle_member = player_member_scene.instance()
 		battle_member_list.add_player(battle_member)
 		BattleGlobals.player_party.append(battle_member)
 		battle_member.set_member_data_from_globals(member)

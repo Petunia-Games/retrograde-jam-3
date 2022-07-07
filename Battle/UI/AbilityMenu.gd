@@ -96,10 +96,8 @@ func _on_battle_item_selected(item) -> void:
 	set_active_menu(target_list, item)
 	
 	
-func _on_battle_target_selected(action, target) -> void:
-	var from = BattleGlobals.active_player_party_members[BattleGlobals.active_party_member_index]
-	var to = target
-	Events.emit_signal("battle_action_added", action, from, to)
+func _on_battle_target_selected(action, from, to) -> void:
+	Events.emit_signal("battle_player_action_added", action, from, to)
 	
 	if not BattleGlobals.is_everyone_in_turn_queue():
 		Events.emit_signal("battle_member_changed")

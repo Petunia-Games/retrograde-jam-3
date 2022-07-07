@@ -8,6 +8,9 @@ var target_scene = preload("res://Battle/UI/Target.tscn")
 var current_target_list = null
 var selected_target_index = 0
 
+var action
+var from
+var to
 
 func process_input() -> void:
 	if Input.is_action_just_pressed("up"):
@@ -20,7 +23,8 @@ func process_input() -> void:
 		pass
 	
 	if Input.is_action_just_pressed("confirm"):
-		pass
+		to = current_target_list.get_child(selected_target_index)
+		Events.emit_signal("battle_target_selected", action, from, to)
 	elif Input.is_action_just_pressed("cancel"):
 		Events.emit_signal("battle_submenu_cancelled")
 	elif Input.is_action_just_pressed("select"):
@@ -35,6 +39,8 @@ func add_target_to_list(target_data) -> void:
 
 
 func populate_list(ability) -> void:
+	action = ability
+	from = BattleGlobals.active_player_party_members[BattleGlobals.active_party_member_index]
 	clear_list()
 	
 	match ability.type:
@@ -51,6 +57,7 @@ func populate_list(ability) -> void:
 			
 	selected_target_index = 0
 	current_target_list.get_child(selected_target_index).set_selected()
+
 
 func clear_list() -> void:
 	if not enemy_target_list.get_child_count() == 0:

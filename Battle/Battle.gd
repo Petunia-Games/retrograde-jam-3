@@ -19,8 +19,9 @@ var current_phase
 func _ready() -> void:
 	BattleGlobals.clear()
 	Events.connect("battle_started", self, "_on_battle_started")
-	Events.connect("battle_action_added", self, "_on_battle_action_added")
-
+	Events.connect("battle_decision_phase_started", self, "_on_battle_decision_phase_started")
+	Events.connect("battle_player_action_added", self, "_on_battle_player_action_added")
+	Events.connect("battle_enemy_action_added", self, "_on_battle_enemy_action_added")
 
 func set_enemies_from_encounter_id(enc_id) -> void:
 	for enemy_id in Encounters.id[str(enc_id)]:
@@ -49,5 +50,14 @@ func _on_battle_started() -> void:
 	Events.emit_signal("battle_decision_phase_started")
 
 
-func _on_battle_action_added(action, from, to) -> void:
+func _on_battle_decision_phase_started() -> void:
+	for enemy in BattleGlobals.enemy_party:
+		enemy.decide_action()
+
+
+func _on_battle_player_action_added(action, from, to) -> void:
+	BattleGlobals.add_action_to_turn_queue(action, from, to)
+
+
+func _on_battle_enemy_action_added(action, from, to) -> void:
 	BattleGlobals.add_action_to_turn_queue(action, from, to)

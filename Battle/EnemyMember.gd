@@ -21,9 +21,9 @@ var speed: int = 0
 var sorcery: int = 0
 var defense: int = 0
 
-var abilities: Array = []
 var items: Array = []
 
+var ai_script
 
 func _ready() -> void:
 	pointer_anim.play("Deselected")
@@ -42,9 +42,11 @@ func set_member_data_from_globals(_id) -> void:
 	sorcery = Enemies.id[str(_id)][Enemies.SORCERY]
 	defense = Enemies.id[str(_id)][Enemies.DEFENSE]
 	
-	abilities = Enemies.id[str(_id)][Enemies.ABILITIES]
 	items = Enemies.id[str(_id)][Enemies.ITEMS]
+	
+	ai_script = load(Enemies.id[str(_id)][Enemies.AI_SCRIPT])
 
+	
 
 func set_selected() -> void:
 	pointer_anim.play("Selected")
@@ -56,3 +58,7 @@ func set_deselected() -> void:
 	
 func modify_hp(amount, is_damage: bool = true) -> void:
 	pass
+
+
+func decide_action() -> void:
+	ai_script.decide_action(self)

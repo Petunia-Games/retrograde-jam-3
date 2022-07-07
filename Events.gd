@@ -23,7 +23,8 @@ signal battle_spell_selected(msg)
 signal battle_item_selected(msg)
 signal battle_target_selected(msg)
 
-signal battle_action_added(msg)
+signal battle_player_action_added(msg)
+signal battle_enemy_action_added(msg)
 
 signal battle_won(msg)
 signal battle_lost(msg)

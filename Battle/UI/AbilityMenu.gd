@@ -75,9 +75,8 @@ func _on_battle_ability_selected(ability) -> void:
 			var action = ability
 			var from = BattleGlobals.active_player_party_members[BattleGlobals.active_party_member_index]
 			var to = from
-			Events.emit_signal("battle_action_added", action, from, to)
+			Events.emit_signal("battle_player_action_added", action, from, to)
 			if not BattleGlobals.is_everyone_in_turn_queue():
-				BattleGlobals.set_next_active_party_member()
 				Events.emit_signal("battle_member_changed")
 			else:
 				Events.emit_signal("battle_decision_phase_finished")

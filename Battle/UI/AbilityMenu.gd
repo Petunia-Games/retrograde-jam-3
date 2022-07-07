@@ -22,7 +22,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if active_menu != null:
+	if active_menu != null and weakref(active_menu).get_ref():
 		active_menu.process_input()
 
 
@@ -53,6 +53,10 @@ func set_active_menu(menu, data) -> void:
 	active_menu.populate_list(data)
 
 
+func remove_active_menu() -> void:
+	active_menu.queue_free()
+
+
 func change_party_member() -> void:
 	party_list.set_selected()
 
@@ -76,10 +80,6 @@ func _on_battle_ability_selected(ability) -> void:
 			var from = BattleGlobals.active_player_party_members[BattleGlobals.active_party_member_index]
 			var to = from
 			Events.emit_signal("battle_player_action_added", action, from, to)
-			if not BattleGlobals.is_everyone_in_turn_queue():
-				Events.emit_signal("battle_member_changed")
-			else:
-				Events.emit_signal("battle_decision_phase_finished")
 		Abilities.SUBMENUS.SPELLS:
 			set_active_menu(sorcery_list, BattleGlobals.active_player_party_members[BattleGlobals.active_party_member_index])
 		Abilities.SUBMENUS.ITEMS:
@@ -98,8 +98,3 @@ func _on_battle_item_selected(item) -> void:
 	
 func _on_battle_target_selected(action, from, to) -> void:
 	Events.emit_signal("battle_player_action_added", action, from, to)
-	
-	if not BattleGlobals.is_everyone_in_turn_queue():
-		Events.emit_signal("battle_member_changed")
-	else:
-		Events.emit_signal("battle_decision_phase_finished")

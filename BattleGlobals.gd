@@ -53,7 +53,7 @@ func add_action_to_turn_queue(action, from, to) -> void:
 		from.set_deselected()
 		if not active_player_party_members.empty():
 			active_party_member_index = (active_party_member_index + 1) % active_player_party_members.size()
-			
+				
 
 func set_next_active_party_member() -> void:
 	# This needs to be thought out some more
@@ -70,11 +70,7 @@ func set_next_active_party_member() -> void:
 
 
 func is_everyone_in_turn_queue() -> bool:
+	# TODO: Check for enemies too?
 	if not active_player_party_members.empty():
 		return false
-#	for member in enemy_party:
-#		if not member.is_dead:
-#			for turn in turn_queue:
-#				if not member in turn[FROM]:
-#					return false
 	return true

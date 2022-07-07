@@ -20,6 +20,8 @@ func _ready() -> void:
 	BattleGlobals.clear()
 	Events.connect("battle_started", self, "_on_battle_started")
 	Events.connect("battle_decision_phase_started", self, "_on_battle_decision_phase_started")
+	Events.connect("battle_decision_phase_finished", self, "_on_battle_decision_phase_finished")
+	Events.connect("battle_action_phase_started", self, "_on_battle_action_phase_started")
 	Events.connect("battle_player_action_added", self, "_on_battle_player_action_added")
 	Events.connect("battle_enemy_action_added", self, "_on_battle_enemy_action_added")
 
@@ -55,9 +57,25 @@ func _on_battle_decision_phase_started() -> void:
 		enemy.decide_action()
 
 
+func _on_battle_decision_phase_finished() -> void:
+	Events.emit_signal("battle_action_phase_started")
+
+
+func _on_battle_action_phase_started() -> void:
+	pass
+
+
 func _on_battle_player_action_added(action, from, to) -> void:
 	BattleGlobals.add_action_to_turn_queue(action, from, to)
+	
+	if not BattleGlobals.is_everyone_in_turn_queue():
+		Events.emit_signal("battle_member_changed")
+	else:
+		Events.emit_signal("battle_decision_phase_finished")
 
 
 func _on_battle_enemy_action_added(action, from, to) -> void:
 	BattleGlobals.add_action_to_turn_queue(action, from, to)
+	
+	if BattleGlobals.is_everyone_in_turn_queue():
+		Events.emit_signal("battle_decision_phase_finished")

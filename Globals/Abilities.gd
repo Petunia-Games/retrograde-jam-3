@@ -77,8 +77,38 @@ func do_action(action) -> void:
 		ATTACK:
 			pass
 		ESCAPE:
-			pass
+			# Check if encounter is escapable (store that in the enc id?)
+			# If so:
+			#		Loop through enemies and get the highest "escape difficulty" value
+			#		Generate a random number between 0 and 255
+			#		If it is above the "escape difficulty", emit escape signal
+			if BattleGlobals.can_escape:
+				var rand = randi() % 256
+				if rand > BattleGlobals.get_escape_difficulty():
+					Events.emit_signal("battle_escaped")
 		FIRE:
 			pass
 		THUNDER:
+			pass
+		ICE:
+			pass
+		WATER:
+			pass
+		POISON:
+			pass
+		SEER:
+			pass
+		CURSE:
+			pass
+		NOVA:
+			pass
+		DEVOUR:
+			pass
+		SUPERNOVA:
+			pass
+		POTION:
+			pass
+		AETHER:
+			pass
+		REVIVE:
 			pass

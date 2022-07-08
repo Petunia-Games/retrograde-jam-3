@@ -28,6 +28,7 @@ signal battle_enemy_action_added(msg)
 
 signal battle_won(msg)
 signal battle_lost(msg)
+signal battle_escaped(msg)
 
 
 # Audio

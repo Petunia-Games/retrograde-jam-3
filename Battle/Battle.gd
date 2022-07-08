@@ -24,6 +24,7 @@ func _ready() -> void:
 	Events.connect("battle_player_action_added", self, "_on_battle_player_action_added")
 	Events.connect("battle_enemy_action_added", self, "_on_battle_enemy_action_added")
 
+
 func set_enemies_from_encounter_id(enc_id) -> void:
 	for enemy_id in Encounters.id[str(enc_id)]:
 		var enemy_member = enemy_member_scene.instance()

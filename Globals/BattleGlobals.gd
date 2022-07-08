@@ -5,6 +5,8 @@ const FROM = "from"
 const TO = "to"
 const ACTION = "action"
 
+var can_escape: bool = true
+
 var player_party: Array = []
 var enemy_party: Array = []
 var active_player_party_members: Array = []
@@ -47,15 +49,16 @@ func remove_enemy_member(member_index) -> void:
 
 func add_action_to_turn_queue(action, from, to) -> void:
 	if from.type == "Player":
-		var turn: Dictionary = {FROM:from, TO:to, ACTION:action.ability_id}
+		var turn: Dictionary = {FROM:from, TO:to, ACTION:action}
 		turn_queue.append(turn)
 		active_player_party_members.erase(from)
 		from.set_deselected()
 		if not active_player_party_members.empty():
 			active_party_member_index = (active_party_member_index + 1) % active_player_party_members.size()
 	elif from.type == "Enemy":
-		var turn: Dictionary = {FROM:from, TO:to, ACTION:action[Abilities.ID]}
+		var turn: Dictionary = {FROM:from, TO:to, ACTION:action}
 		turn_queue.append(turn)
+
 
 func set_next_active_party_member() -> void:
 	# This needs to be thought out some more
@@ -76,3 +79,7 @@ func is_everyone_in_turn_queue() -> bool:
 	if not active_player_party_members.empty():
 		return false
 	return true
+
+
+func get_escape_difficulty() -> int:
+	return 0

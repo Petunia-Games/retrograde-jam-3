@@ -4,6 +4,7 @@ onready var pointer: TextureRect = $Pointer
 onready var name_label: Label = $ItemNameLabel
 onready var quantity_label: Label = $QuantityLabel
 
+var ability_id: int
 var item_name: String = ""
 var quantity: String = ""
 var description: String = ""
@@ -16,6 +17,7 @@ func _ready() -> void:
 
 func set_data(item_data: Dictionary) -> void:
 	var item_id = item_data.keys()
+	ability_id = Items.id[item_id[0]][Abilities.ID]
 	item_name = Items.id[item_id[0]][Items.NAME]
 	quantity = str(item_data[item_id[0]][PlayerParty.ITEM_QUANTITY])
 	description = Items.id[item_id[0]][Items.DESCRIPTION]

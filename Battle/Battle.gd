@@ -3,7 +3,6 @@ extends Node
 
 onready var battle_member_list: HBoxContainer = $BattleMembers
 
-
 var player_member_scene = preload("res://Battle/BattleMember.tscn")
 var enemy_member_scene = preload("res://Battle/EnemyMember.tscn")
 
@@ -62,7 +61,8 @@ func _on_battle_decision_phase_finished() -> void:
 
 
 func _on_battle_action_phase_started() -> void:
-	pass
+	for turn in BattleGlobals.turn_queue:
+		Abilities.do_action(turn)
 
 
 func _on_battle_player_action_added(action, from, to) -> void:

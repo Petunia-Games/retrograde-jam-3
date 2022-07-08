@@ -4,6 +4,7 @@ extends HBoxContainer
 onready var pointer: TextureRect = $Pointer
 onready var ability_label: Label = $AbilityLabel
 
+var ability_id: int
 var ability_name = ""
 var description = ""
 var type = ""
@@ -11,6 +12,7 @@ var submenu
 
 
 func set_data(ability_data) -> void:
+	ability_id = ability_data[Abilities.ID]
 	ability_name = ability_data[Abilities.NAME]
 	description = ability_data[Abilities.DESCRIPTION]
 	type = ability_data[Abilities.TYPE]

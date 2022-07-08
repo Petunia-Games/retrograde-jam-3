@@ -5,6 +5,7 @@ onready var spell_name_label: Label = $SpellNameLabel
 onready var spell_uses_remaining: Label = $UsesHBox/SpellUsesLabel
 onready var spell_uses_max: Label = $UsesHBox/SpellMaxUsesLabel
 
+var ability_id: int
 var spell_name: String = ""
 var description: String = ""
 var type: int
@@ -18,6 +19,7 @@ func _ready() -> void:
 
 func set_data(spell_data: Dictionary) -> void:
 	var spell_id = spell_data.keys()
+	ability_id = Spells.id[spell_id[0]][Abilities.ID]
 	spell_name = Spells.id[spell_id[0]][Spells.NAME]
 	uses_remaining = str(spell_data[spell_id[0]][PlayerParty.SPELL_POINTS_CURRENT])
 	uses_max = str(spell_data[spell_id[0]][PlayerParty.SPELL_POINTS_MAX])

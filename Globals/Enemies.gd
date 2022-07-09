@@ -9,6 +9,7 @@ enum {
 const NAME = "name"
 const LEVEL = "level"
 const EXP = "exp"
+const ESCAPE_DIFFICULTY = "escape_difficulty"
 const HP = "hp"
 const STRENGTH = "strength"
 const SPEED = "speed"
@@ -24,6 +25,7 @@ var id = {
 		NAME:"Test",
 		LEVEL:1,
 		EXP:1,
+		ESCAPE_DIFFICULTY:50,
 		HP:50,
 		STRENGTH:1,
 		SPEED:1,
@@ -36,6 +38,7 @@ var id = {
 		NAME:"Hound",
 		LEVEL:1,
 		EXP:10,
+		ESCAPE_DIFFICULTY:50,
 		HP:50,
 		STRENGTH:2,
 		SPEED:3,

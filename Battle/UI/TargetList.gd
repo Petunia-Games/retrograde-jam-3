@@ -1,11 +1,7 @@
 # Battle/TargetList.gd
-extends HBoxContainer
-
-onready var enemy_target_list: VBoxContainer = $EnemyTargets
-onready var player_target_list: VBoxContainer = $PlayerTargets
+extends VBoxContainer
 
 var target_scene = preload("res://Battle/UI/Target.tscn")
-var current_target_list = null
 var selected_target_index = 0
 
 var action
@@ -14,12 +10,14 @@ var to
 
 func process_input() -> void:
 	if Input.is_action_just_pressed("up"):
+		select_previous_target()
 		Events.emit_signal("audio_sfx_started", Audio.id[str(Audio.MOVE_CURSOR)])
 	elif Input.is_action_just_pressed("down"):
+		select_next_target()
 		Events.emit_signal("audio_sfx_started", Audio.id[str(Audio.MOVE_CURSOR)])
 	
 	if Input.is_action_just_pressed("confirm"):
-		to = current_target_list.get_child(selected_target_index)
+		to = get_child(selected_target_index)
 		Events.emit_signal("battle_target_selected", action, from, to)
 	elif Input.is_action_just_pressed("cancel"):
 		Events.emit_signal("battle_submenu_cancelled")
@@ -29,10 +27,9 @@ func process_input() -> void:
 
 func add_target_to_list(target_data) -> void:
 	var target = target_scene.instance()
-	current_target_list.add_child(target)
+	add_child(target)
 	target.set_data(target_data)
 	
-
 
 func populate_list(ability) -> void:
 	action = ability
@@ -41,25 +38,32 @@ func populate_list(ability) -> void:
 	
 	match ability.type:
 		Abilities.ABILITY_TYPE.OFFENSIVE:
-			current_target_list = enemy_target_list
 			for target in BattleGlobals.enemy_party:
-				current_target_list = enemy_target_list
 				add_target_to_list(target)
 		Abilities.ABILITY_TYPE.DEFENSIVE:
-			current_target_list = player_target_list
 			for target in BattleGlobals.player_party:
-				current_target_list = player_target_list
 				add_target_to_list(target)
 			
 	selected_target_index = 0
-	current_target_list.get_child(selected_target_index).set_selected()
+	get_child(selected_target_index).set_selected()
 
 
 func clear_list() -> void:
-	if not enemy_target_list.get_child_count() == 0:
-		for child in enemy_target_list.get_children():
+	if not get_child_count() == 0:
+		for child in get_children():
 			child.free()
-		
-	if not player_target_list.get_child_count() == 0:
-		for child in player_target_list.get_children():
-			child.free()
+
+
+func select_next_target() -> void:
+	get_child(selected_target_index).set_deselected()
+	selected_target_index = (selected_target_index + 1) % get_child_count()
+	get_child(selected_target_index).set_selected()
+	
+
+func select_previous_target() -> void:
+	get_child(selected_target_index).set_deselected()
+	if selected_target_index == 0:
+		selected_target_index = get_child_count() - 1
+	else:
+		selected_target_index = selected_target_index - 1
+	get_child(selected_target_index).set_selected()

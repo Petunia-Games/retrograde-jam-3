@@ -11,6 +11,10 @@ var target_hp_current: String = ""
 var target_hp_max: String = ""
 
 
+func _ready() -> void:
+	pointer.self_modulate.a = 0.0
+
+
 func set_data(target_data) -> void:
 	target_ref = target_data
 	target_name = target_data.member_name
@@ -23,8 +27,8 @@ func set_data(target_data) -> void:
 	
 
 func set_selected() -> void:
-	pass
+	pointer.self_modulate.a = 1.0
 	
 	
 func set_deselected() -> void:
-	pass
+	pointer.self_modulate.a = 0.0

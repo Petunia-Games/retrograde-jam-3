@@ -100,5 +100,13 @@ var id = {
 		TYPE:Abilities.ABILITY_TYPE.OFFENSIVE,
 		POWER:2,
 		ELEMENT:ELEMENTS.NONE
-	}
+	},
+	str(DEVOUR):{
+		ID:Abilities.DEVOUR,
+		NAME:"Devour",
+		DESCRIPTION:"Bite single target.",
+		TYPE:Abilities.ABILITY_TYPE.OFFENSIVE,
+		POWER:2,
+		ELEMENT:ELEMENTS.NONE
+	},
 }

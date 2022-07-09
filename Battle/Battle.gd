@@ -18,6 +18,7 @@ var current_phase
 func _ready() -> void:
 	BattleGlobals.clear()
 	Events.connect("battle_started", self, "_on_battle_started")
+	Events.connect("battle_escaped", self, "_on_battle_escaped")
 	Events.connect("battle_decision_phase_started", self, "_on_battle_decision_phase_started")
 	Events.connect("battle_decision_phase_finished", self, "_on_battle_decision_phase_finished")
 	Events.connect("battle_action_phase_started", self, "_on_battle_action_phase_started")
@@ -50,6 +51,11 @@ func _on_battle_started() -> void:
 	set_party_members()
 	current_phase = DECISION_PHASE
 	Events.emit_signal("battle_decision_phase_started")
+
+
+func _on_battle_escaped() -> void:
+	print("Escaped from battle")
+
 
 
 func _on_battle_decision_phase_started() -> void:

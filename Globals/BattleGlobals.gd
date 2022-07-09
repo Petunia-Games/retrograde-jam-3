@@ -55,7 +55,6 @@ func add_action_to_turn_queue(action, from, to) -> void:
 		from.set_deselected()
 		if not active_player_party_members.empty():
 			active_party_member_index = (active_party_member_index + 1) % active_player_party_members.size()
-		print("add_action func: Action: %s, From: %s, To: %s" % [action.ability_id, from, to])
 	elif from.type == "Enemy":
 		var turn: Dictionary = {FROM:from, TO:to, ACTION:action[Abilities.ID]}
 		turn_queue.append(turn)
@@ -83,4 +82,9 @@ func is_everyone_in_turn_queue() -> bool:
 
 
 func get_escape_difficulty() -> int:
-	return 0
+	# Loop through enemies and return the highest escape difficulty
+	var escape_difficulty = 0
+	for enemy in enemy_party:
+		if enemy.escape_difficulty > escape_difficulty:
+			escape_difficulty = enemy.escape_difficulty
+	return escape_difficulty

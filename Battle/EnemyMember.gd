@@ -14,6 +14,7 @@ var type = "Enemy"
 
 var level: int = 0
 var experience: int = 0
+var escape_difficulty: int = 0
 var hp_current: int = 0
 var hp_max: int = 0
 var strength: int = 0
@@ -35,6 +36,7 @@ func set_member_data_from_globals(_id) -> void:
 	
 	level = Enemies.id[str(_id)][Enemies.LEVEL]
 	experience = Enemies.id[str(_id)][Enemies.EXP]
+	escape_difficulty = Enemies.id[str(_id)][Enemies.ESCAPE_DIFFICULTY]
 	hp_current = Enemies.id[str(_id)][Enemies.HP]
 	hp_max = Enemies.id[str(_id)][Enemies.HP]
 	strength = Enemies.id[str(_id)][Enemies.STRENGTH]

@@ -11,6 +11,7 @@ func _ready() -> void:
 	Events.connect("battle_action_phase_started", self, "_on_battle_action_phase_started")
 	Events.connect("battle_member_changed", self, "_on_battle_member_changed")
 	Events.connect("battle_submenu_item_changed", self, "_on_battle_submenu_item_changed")
+	Events.connect("battle_submenu_cancelled", self, "_on_battle_submenu_cancelled")
 	textbox.visible = false
 
 
@@ -32,4 +33,8 @@ func _on_battle_member_changed() -> void:
 	
 func _on_battle_submenu_item_changed(submenu_item) -> void:
 	textbox.set_text(submenu_item.description)
-	Events.emit_signal("audio_sfx_started", Audio.id["0"])
+	Events.emit_signal("audio_sfx_started", Audio.id[str(Audio.MOVE_CURSOR)])
+
+
+func _on_battle_submenu_cancelled() -> void:
+	textbox.visible = false

@@ -8,6 +8,7 @@ var action
 var from
 var to
 
+
 func process_input() -> void:
 	if Input.is_action_just_pressed("up"):
 		select_previous_target()

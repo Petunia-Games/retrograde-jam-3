@@ -75,6 +75,8 @@ var id = {
 func do_action(action) -> void:
 	match action[BattleGlobals.ACTION]:
 		ATTACK:
+			# Calculate random damage based on attacker str and opponent def
+			# attack*(100/(100+defense)) ?
 			pass
 		ESCAPE:
 			# Check if encounter is escapable (store that in the enc id?)

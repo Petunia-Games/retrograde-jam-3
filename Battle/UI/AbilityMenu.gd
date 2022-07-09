@@ -110,5 +110,5 @@ func _on_battle_item_selected(item) -> void:
 	
 	
 func _on_battle_target_selected(action, from, to) -> void:
-	Events.emit_signal("battle_player_action_added", action, from, to)
+	Events.emit_signal("battle_player_action_added", action, from, to.target_ref)
 	previous_menus.clear()

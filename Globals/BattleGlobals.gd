@@ -49,14 +49,15 @@ func remove_enemy_member(member_index) -> void:
 
 func add_action_to_turn_queue(action, from, to) -> void:
 	if from.type == "Player":
-		var turn: Dictionary = {FROM:from, TO:to, ACTION:action}
+		var turn: Dictionary = {FROM:from, TO:to, ACTION:action.ability_id}
 		turn_queue.append(turn)
 		active_player_party_members.erase(from)
 		from.set_deselected()
 		if not active_player_party_members.empty():
 			active_party_member_index = (active_party_member_index + 1) % active_player_party_members.size()
+		print("add_action func: Action: %s, From: %s, To: %s" % [action.ability_id, from, to])
 	elif from.type == "Enemy":
-		var turn: Dictionary = {FROM:from, TO:to, ACTION:action}
+		var turn: Dictionary = {FROM:from, TO:to, ACTION:action[Abilities.ID]}
 		turn_queue.append(turn)
 
 

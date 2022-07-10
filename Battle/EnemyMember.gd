@@ -1,4 +1,4 @@
-# Battle/Enemy.gd
+# Battle/EnemyMember.gd
 extends Control
 
 onready var pointer_anim: AnimationPlayer = $PointerAnimationPlayer

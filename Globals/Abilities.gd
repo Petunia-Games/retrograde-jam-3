@@ -99,7 +99,7 @@ func do_action(action) -> void:
 		POISON:
 			pass
 		SEER:
-			pass
+			Events.emit_signal("audio_sfx_started", Audio.SEER)
 		CURSE:
 			pass
 		NOVA:

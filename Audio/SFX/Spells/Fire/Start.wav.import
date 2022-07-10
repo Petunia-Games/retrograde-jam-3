@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Start.wav-3d7472e6462f6b56d14fd88456ff723a.sample"
+path="res://.import/Start.wav-1c27c5abd32e1f3cd8211671b9b5915a.sample"
 
 [deps]
 
-source_file="res://SFX/Spells/Thunder/Start.wav"
-dest_files=[ "res://.import/Start.wav-3d7472e6462f6b56d14fd88456ff723a.sample" ]
+source_file="res://Audio/SFX/Spells/Fire/Start.wav"
+dest_files=[ "res://.import/Start.wav-1c27c5abd32e1f3cd8211671b9b5915a.sample" ]
 
 [params]
 

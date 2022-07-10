@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Selection.wav-f9e3d75d94ba7b7a3047cb607d92215b.sample"
+path="res://.import/End.wav-cdc522dbbc103fb2bdc6e715c9d1d524.sample"
 
 [deps]
 
-source_file="res://SFX/Cursor/Selection.wav"
-dest_files=[ "res://.import/Selection.wav-f9e3d75d94ba7b7a3047cb607d92215b.sample" ]
+source_file="res://Audio/SFX/Spells/Fire/End.wav"
+dest_files=[ "res://.import/End.wav-cdc522dbbc103fb2bdc6e715c9d1d524.sample" ]
 
 [params]
 

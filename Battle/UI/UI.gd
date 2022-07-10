@@ -1,8 +1,11 @@
 # UI.gd
 extends VBoxContainer
 
-onready var ability_menu: HBoxContainer = $AbilityMenu
+var ability_menu_scene = preload("res://Battle/UI/AbilityMenu.tscn")
+
 onready var textbox: NinePatchRect = $Textbox
+
+var ability_menu = null
 
 
 func _ready() -> void:
@@ -16,12 +19,15 @@ func _ready() -> void:
 
 
 func _on_decision_phase_started() -> void:
+	ability_menu = ability_menu_scene.instance()
+	add_child(ability_menu)
 	ability_menu.set_active_menu(ability_menu.ability_list, BattleGlobals.active_player_party_members[BattleGlobals.active_party_member_index])
 	ability_menu.change_party_member()
 
 
 func _on_battle_action_phase_started() -> void:
 	ability_menu.remove_active_menu()
+	ability_menu.queue_free()
 
 
 func _on_battle_member_changed() -> void:

@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/End.wav-9c60042614c4f635ca72d8daafe491bd.sample"
+path="res://.import/End.wav-a7d11ea46600fef5bf4a41bc65e398f2.sample"
 
 [deps]
 
-source_file="res://SFX/Spells/Water/End.wav"
-dest_files=[ "res://.import/End.wav-9c60042614c4f635ca72d8daafe491bd.sample" ]
+source_file="res://Audio/SFX/Spells/Thunder/End.wav"
+dest_files=[ "res://.import/End.wav-a7d11ea46600fef5bf4a41bc65e398f2.sample" ]
 
 [params]
 

@@ -5,6 +5,9 @@ extends Node
 signal battle_started(msg)
 signal battle_finished(msg)
 
+signal battle_talk_phase_started(msg)
+signal battle_talk_phase_finished(msg)
+
 signal battle_decision_phase_started(msg)
 signal battle_decision_phase_finished(msg)
 

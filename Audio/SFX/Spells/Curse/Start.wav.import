@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/End.wav-7f3d9cb892c82dced9a94b964146bbce.sample"
+path="res://.import/Start.wav-bd554b8d1b11e5669269a0ddb4cc0fff.sample"
 
 [deps]
 
-source_file="res://SFX/Spells/Nova/End.wav"
-dest_files=[ "res://.import/End.wav-7f3d9cb892c82dced9a94b964146bbce.sample" ]
+source_file="res://Audio/SFX/Spells/Curse/Start.wav"
+dest_files=[ "res://.import/Start.wav-bd554b8d1b11e5669269a0ddb4cc0fff.sample" ]
 
 [params]
 

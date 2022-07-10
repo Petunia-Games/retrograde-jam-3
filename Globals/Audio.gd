@@ -2,9 +2,13 @@
 extends Node
 
 enum {
-	MOVE_CURSOR,
+	UI_MOVE_CURSOR,
+	UI_CONFIRM,
+	UI_CANCEL,
+	UI_SWITCH,
+	
 }
 
 var id = {
-	str(MOVE_CURSOR):"res://SFX/Cursor/Selection.wav",
+	str(UI_MOVE_CURSOR):"res://Audio/SFX/UI/UI_MOVE_CURSOR.wav",
 }

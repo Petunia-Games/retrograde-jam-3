@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/End.wav-f3395ca69823b4c88f9cdbde9ea68a07.sample"
+path="res://.import/Start.wav-bdeceabfe5294656670f5c98ab7ab508.sample"
 
 [deps]
 
-source_file="res://SFX/Spells/Thunder/End.wav"
-dest_files=[ "res://.import/End.wav-f3395ca69823b4c88f9cdbde9ea68a07.sample" ]
+source_file="res://Audio/SFX/Spells/Nova/Start.wav"
+dest_files=[ "res://.import/Start.wav-bdeceabfe5294656670f5c98ab7ab508.sample" ]
 
 [params]
 

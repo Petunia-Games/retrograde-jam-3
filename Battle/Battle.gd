@@ -26,7 +26,7 @@ func _ready() -> void:
 	Events.connect("battle_action_phase_finished",self, "_on_battle_action_phase_finished")
 	Events.connect("battle_player_action_added", self, "_on_battle_player_action_added")
 	Events.connect("battle_enemy_action_added", self, "_on_battle_enemy_action_added")
-
+	Events.connect("battle_member_died", self, "_on_battle_member_died")
 
 func set_enemies_from_encounter_id(enc_id) -> void:
 	for enemy_id in Encounters.id[str(enc_id)]:
@@ -104,3 +104,8 @@ func _on_battle_enemy_action_added(action, from, to) -> void:
 	
 	if BattleGlobals.is_everyone_in_turn_queue():
 		Events.emit_signal("battle_decision_phase_finished")
+
+
+func _on_battle_member_died(member) -> void:
+	if member.type == "Enemy":
+		queue_free()

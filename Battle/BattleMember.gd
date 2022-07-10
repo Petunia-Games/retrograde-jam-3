@@ -56,4 +56,7 @@ func set_deselected() -> void:
 	
 	
 func modify_hp(amount, is_damage: bool = true) -> void:
-	pass
+	if is_damage:
+		hp_current -= amount
+		if hp_current <= 0:
+			Events.emit_signal("battle_member_died", self)

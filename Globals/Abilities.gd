@@ -73,6 +73,8 @@ var id = {
 	
 
 func do_action(action):
+	# TODO: Check that target exists
+	# If not, pick the next (how do I do that?)
 	yield(get_tree(), "idle_frame")
 	var sound = null
 	var from = action[BattleGlobals.FROM]
@@ -82,7 +84,11 @@ func do_action(action):
 		ATTACK:
 			# Calculate random damage based on attacker str and opponent def
 			# attack*(100/(100+defense)) ?
+			var attack = from.strength
+			var defense = target.defense
+			var damage = attack * (1000/(100+defense))
 			yield(Audio.audio_player.play_sfx(Audio.id[str(Audio.ABILITY_ATTACK)]), "finished")
+			target.modify_hp(damage, true)
 		ESCAPE:
 			# Check if encounter is escapable (store that in the enc id?)
 			# If so:

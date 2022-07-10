@@ -29,6 +29,9 @@ signal battle_target_selected(msg)
 signal battle_player_action_added(msg)
 signal battle_enemy_action_added(msg)
 
+signal battle_member_died(msg)
+signal battle_member_revived(msg)
+
 signal battle_won(msg)
 signal battle_lost(msg)
 signal battle_escaped(msg)

@@ -70,9 +70,11 @@ var id = {
 		SUBMENU:SUBMENUS.NONE
 	},
 }
+	
 
-
-func do_action(action) -> void:
+func do_action(action):
+	yield(get_tree(), "idle_frame")
+	var sound = null
 	var from = action[BattleGlobals.FROM]
 	var target = action[BattleGlobals.TO]
 	
@@ -80,7 +82,7 @@ func do_action(action) -> void:
 		ATTACK:
 			# Calculate random damage based on attacker str and opponent def
 			# attack*(100/(100+defense)) ?
-			pass
+			yield(Audio.audio_player.play_sfx(Audio.id[str(Audio.ABILITY_ATTACK)]), "finished")
 		ESCAPE:
 			# Check if encounter is escapable (store that in the enc id?)
 			# If so:
@@ -107,7 +109,7 @@ func do_action(action) -> void:
 			#		Add them to the list and update the hp (random chance to succeed?)
 			if not target.member_id in BattleGlobals.enemy_stats_known:
 				BattleGlobals.enemy_stats_known.append(target.member_id)
-			Events.emit_signal("audio_sfx_started", Audio.id[str(Audio.SPELL_SEER)])
+			yield(Audio.audio_player.play_sfx(Audio.id[str(Audio.SPELL_SEER)]), "finished")
 		CURSE:
 			pass
 		NOVA:

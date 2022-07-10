@@ -2,6 +2,7 @@
 extends Node
 
 onready var battle_member_list: HBoxContainer = $BattleMembers
+onready var ui: VBoxContainer = $UI
 
 var player_member_scene = preload("res://Battle/BattleMember.tscn")
 var enemy_member_scene = preload("res://Battle/EnemyMember.tscn")
@@ -41,13 +42,10 @@ func set_party_members() -> void:
 		battle_member_list.add_player(battle_member)
 		BattleGlobals.player_party.append(battle_member)
 		battle_member.set_member_data_from_globals(member)
-		if not battle_member.is_dead:
-			BattleGlobals.active_player_party_members.append(battle_member)
-	
-	BattleGlobals.set_next_active_party_member()
 
 
 func _on_battle_started() -> void:
+	set_party_members()
 	set_enemies_from_encounter_id(Globals.encounter_id)
 	Events.emit_signal("battle_decision_phase_started")
 
@@ -57,24 +55,38 @@ func _on_battle_escaped() -> void:
 
 
 func _on_battle_decision_phase_started() -> void:
-	set_party_members()
+	for member in BattleGlobals.player_party:
+		if not member.is_dead:
+			BattleGlobals.active_player_party_members.append(member)
+			
+	BattleGlobals.set_next_active_party_member()
+	
 	for enemy in BattleGlobals.enemy_party:
 		enemy.decide_action()
+		
+	ui.show_ability_menu()
 	
 
 func _on_battle_decision_phase_finished() -> void:
+	BattleGlobals.active_party_member_index = null
+	ui.remove_ability_menu()
+	
 	Events.emit_signal("battle_action_phase_started")
 
 
 func _on_battle_action_phase_started() -> void:
+	ui.show_beat_window()
 	for turn in BattleGlobals.turn_queue:
-		Abilities.do_action(turn)
-		
+		yield(Abilities.do_action(turn), "completed")
+
 	Events.emit_signal("battle_action_phase_finished")
 
 
 func _on_battle_action_phase_finished() -> void:
+	BattleGlobals.turn_number += 1
+	ui.remove_beat_window()
 	BattleGlobals.turn_queue.clear()
+	
 	Events.emit_signal("battle_decision_phase_started")
 	
 

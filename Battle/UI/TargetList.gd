@@ -12,10 +12,10 @@ var to
 func process_input() -> void:
 	if Input.is_action_just_pressed("up"):
 		select_previous_target()
-		Events.emit_signal("audio_sfx_started", Audio.id[str(Audio.UI_MOVE_CURSOR)])
+		Audio.audio_player.play_sfx(Audio.id[str(Audio.UI_MOVE_CURSOR)])
 	elif Input.is_action_just_pressed("down"):
 		select_next_target()
-		Events.emit_signal("audio_sfx_started", Audio.id[str(Audio.UI_MOVE_CURSOR)])
+		Audio.audio_player.play_sfx(Audio.id[str(Audio.UI_MOVE_CURSOR)])
 	
 	if Input.is_action_just_pressed("confirm"):
 		to = get_child(selected_target_index)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Sprites/test_player.png" type="Texture" id=1]
 [ext_resource path="res://Battle/BattleMember.gd" type="Script" id=2]
@@ -87,6 +87,15 @@ tracks/1/keys = {
 "values": [ Vector2( 0, -16 ), Vector2( 0, -24 ), Vector2( 0, -16 ) ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id=5]
+resource_name = "Ready"
+
+[sub_resource type="Animation" id=6]
+resource_name = "Throw Item"
+
 [node name="BattleMember" type="Control"]
 margin_right = 16.0
 margin_bottom = 16.0
@@ -116,3 +125,6 @@ anims/RESET = SubResource( 1 )
 anims/Selected = SubResource( 2 )
 
 [node name="MemberAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 4 )
+anims/Ready = SubResource( 5 )
+"anims/Throw Item" = SubResource( 6 )

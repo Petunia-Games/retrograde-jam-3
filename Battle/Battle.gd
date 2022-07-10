@@ -22,6 +22,7 @@ func _ready() -> void:
 	Events.connect("battle_decision_phase_started", self, "_on_battle_decision_phase_started")
 	Events.connect("battle_decision_phase_finished", self, "_on_battle_decision_phase_finished")
 	Events.connect("battle_action_phase_started", self, "_on_battle_action_phase_started")
+	Events.connect("battle_action_phase_finished",self, "_on_battle_action_phase_finished")
 	Events.connect("battle_player_action_added", self, "_on_battle_player_action_added")
 	Events.connect("battle_enemy_action_added", self, "_on_battle_enemy_action_added")
 
@@ -48,8 +49,6 @@ func set_party_members() -> void:
 
 func _on_battle_started() -> void:
 	set_enemies_from_encounter_id(Globals.encounter_id)
-	set_party_members()
-	current_phase = DECISION_PHASE
 	Events.emit_signal("battle_decision_phase_started")
 
 
@@ -57,11 +56,11 @@ func _on_battle_escaped() -> void:
 	print("Escaped from battle")
 
 
-
 func _on_battle_decision_phase_started() -> void:
+	set_party_members()
 	for enemy in BattleGlobals.enemy_party:
 		enemy.decide_action()
-
+	
 
 func _on_battle_decision_phase_finished() -> void:
 	Events.emit_signal("battle_action_phase_started")
@@ -70,7 +69,14 @@ func _on_battle_decision_phase_finished() -> void:
 func _on_battle_action_phase_started() -> void:
 	for turn in BattleGlobals.turn_queue:
 		Abilities.do_action(turn)
+		
+	Events.emit_signal("battle_action_phase_finished")
 
+
+func _on_battle_action_phase_finished() -> void:
+	BattleGlobals.turn_queue.clear()
+	Events.emit_signal("battle_decision_phase_started")
+	
 
 func _on_battle_player_action_added(action, from, to) -> void:
 	BattleGlobals.add_action_to_turn_queue(action, from, to)

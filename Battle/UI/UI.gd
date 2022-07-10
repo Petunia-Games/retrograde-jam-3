@@ -41,7 +41,8 @@ func _on_battle_action_phase_started() -> void:
 
 
 func _on_battle_action_phase_finished() -> void:
-	beat_window.queue_free()
+	if beat_window != null:
+		beat_window.queue_free()
 	textbox.visible = false
 
 

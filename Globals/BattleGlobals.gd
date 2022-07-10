@@ -11,7 +11,7 @@ var player_party: Array = []
 var enemy_party: Array = []
 var active_player_party_members: Array = []
 
-var enemy_stats_known = []
+var enemy_stats_known: Array = []
 
 var active_party_member_index = null
 var previous_party_member_index = null

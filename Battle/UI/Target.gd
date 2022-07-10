@@ -18,8 +18,16 @@ func _ready() -> void:
 func set_data(target_data) -> void:
 	target_ref = target_data
 	target_name = target_data.member_name
-	target_hp_current = str(target_data.hp_current)
-	target_hp_max = str(target_data.hp_max)
+	if target_data.type == "Enemy":
+		if target_data.member_id in BattleGlobals.enemy_stats_known:
+			target_hp_current = str(target_data.hp_current)
+			target_hp_max = str(target_data.hp_max)
+		else:
+			target_hp_current = target_data.UNDISCOVERED
+			target_hp_max = target_data.UNDISCOVERED
+	else:
+		target_hp_current = str(target_data.hp_current)
+		target_hp_max = str(target_data.hp_max)
 
 	name_label.text = target_name
 	hp_current_label.text = target_hp_current

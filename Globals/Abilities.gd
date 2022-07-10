@@ -73,6 +73,9 @@ var id = {
 
 
 func do_action(action) -> void:
+	var from = action[BattleGlobals.FROM]
+	var target = action[BattleGlobals.TO]
+	
 	match action[BattleGlobals.ACTION]:
 		ATTACK:
 			# Calculate random damage based on attacker str and opponent def
@@ -99,6 +102,11 @@ func do_action(action) -> void:
 		POISON:
 			pass
 		SEER:
+			# Check if enemy is in list of discovered enemies
+			# If not:
+			#		Add them to the list and update the hp (random chance to succeed?)
+			if not target.member_id in BattleGlobals.enemy_stats_known:
+				BattleGlobals.enemy_stats_known.append(target.member_id)
 			Events.emit_signal("audio_sfx_started", Audio.id[str(Audio.SPELL_SEER)])
 		CURSE:
 			pass

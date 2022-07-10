@@ -1,4 +1,4 @@
-# AbilityList.gd
+# Battle/UI/AbilityList.gd
 extends NinePatchRect
 
 onready var list: VBoxContainer = $VBoxContainer
@@ -9,10 +9,10 @@ var selected_ability_index = 0
 func process_input() -> void:
 	if Input.is_action_just_pressed("up"):
 		select_previous_ability()
-		Events.emit_signal("audio_sfx_started", Audio.id[str(Audio.MOVE_CURSOR)])
+		Events.emit_signal("audio_sfx_started", Audio.id[str(Audio.UI_MOVE_CURSOR)])
 	elif Input.is_action_just_pressed("down"):
 		select_next_ability()
-		Events.emit_signal("audio_sfx_started", Audio.id[str(Audio.MOVE_CURSOR)])
+		Events.emit_signal("audio_sfx_started", Audio.id[str(Audio.UI_MOVE_CURSOR)])
 	
 	if Input.is_action_just_pressed("confirm"):
 		Events.emit_signal("battle_ability_selected", list.get_child(selected_ability_index))

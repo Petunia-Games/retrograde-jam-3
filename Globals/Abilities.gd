@@ -72,16 +72,23 @@ var id = {
 }
 	
 
+func pick_valid_target(from, target):
+	if target.is_dead:
+		for t in from.targets:
+			if not t.is_dead:
+				return t
+	return target
+
+
 func do_action(action):
-	# TODO: Check that target exists
-	# If not, pick the next (how do I do that?)
 	yield(get_tree(), "idle_frame")
-	var sound = null
+	
 	var from = action[BattleGlobals.FROM]
 	var target = action[BattleGlobals.TO]
 	
 	match action[BattleGlobals.ACTION]:
 		ATTACK:
+			target = pick_valid_target(from, target)
 			# Calculate random damage based on attacker str and opponent def
 			# attack*(100/(100+defense)) ?
 			var attack = from.strength
@@ -100,16 +107,29 @@ func do_action(action):
 				if rand > BattleGlobals.get_escape_difficulty():
 					Events.emit_signal("battle_escaped")
 		FIRE:
-			pass
+			target = pick_valid_target(from, target)
+			var attack = from.sorcery
+			var defense = target.defense
+			var damage = attack * (1000/(100+defense))
+			yield(Audio.audio_player.play_sfx(Audio.id[str(Audio.SPELL_FIRE_START)]), "finished")
+			yield(Audio.audio_player.play_sfx(Audio.id[str(Audio.SPELL_FIRE_END)]), "finished")
+			target.modify_hp(damage, true)
 		THUNDER:
-			pass
+			target = pick_valid_target(from, target)
+			yield(Audio.audio_player.play_sfx(Audio.id[str(Audio.SPELL_THUNDER_START)]), "finished")
+			yield(Audio.audio_player.play_sfx(Audio.id[str(Audio.SPELL_THUNDER_END)]), "finished")
 		ICE:
-			pass
+			target = pick_valid_target(from, target)
+			yield(Audio.audio_player.play_sfx(Audio.id[str(Audio.SPELL_ICE_START)]), "finished")
+			yield(Audio.audio_player.play_sfx(Audio.id[str(Audio.SPELL_ICE_END)]), "finished")
 		WATER:
-			pass
+			target = pick_valid_target(from, target)
+			yield(Audio.audio_player.play_sfx(Audio.id[str(Audio.SPELL_WATER_START)]), "finished")
+			yield(Audio.audio_player.play_sfx(Audio.id[str(Audio.SPELL_WATER_END)]), "finished")
 		POISON:
-			pass
+			target = pick_valid_target(from, target)
 		SEER:
+			target = pick_valid_target(from, target)
 			# Check if enemy is in list of discovered enemies
 			# If not:
 			#		Add them to the list and update the hp (random chance to succeed?)
@@ -117,16 +137,26 @@ func do_action(action):
 				BattleGlobals.enemy_stats_known.append(target.member_id)
 			yield(Audio.audio_player.play_sfx(Audio.id[str(Audio.SPELL_SEER)]), "finished")
 		CURSE:
-			pass
+			target = pick_valid_target(from, target)
+			yield(Audio.audio_player.play_sfx(Audio.id[str(Audio.SPELL_CURSE_START)]), "finished")
+			yield(Audio.audio_player.play_sfx(Audio.id[str(Audio.SPELL_CURSE_END)]), "finished")
 		NOVA:
-			pass
+			target = pick_valid_target(from, target)
+			yield(Audio.audio_player.play_sfx(Audio.id[str(Audio.SPELL_NOVA_START)]), "finished")
+			yield(Audio.audio_player.play_sfx(Audio.id[str(Audio.SPELL_NOVA_END)]), "finished")
 		DEVOUR:
-			pass
+			target = pick_valid_target(from, target)
 		SUPERNOVA:
-			pass
+			target = pick_valid_target(from, target)
 		POTION:
-			pass
+			target = pick_valid_target(from, target)
+			yield(Audio.audio_player.play_sfx(Audio.id[str(Audio.ITEM_USE)]), "finished")
+			yield(Audio.audio_player.play_sfx(Audio.id[str(Audio.ITEM_POTION)]), "finished")
+			target.modify_hp(100, false)
 		AETHER:
-			pass
+			target = pick_valid_target(from, target)
+			yield(Audio.audio_player.play_sfx(Audio.id[str(Audio.ITEM_USE)]), "finished")
+			yield(Audio.audio_player.play_sfx(Audio.id[str(Audio.ITEM_AETHER)]), "finished")
 		REVIVE:
-			pass
+			yield(Audio.audio_player.play_sfx(Audio.id[str(Audio.ITEM_USE)]), "finished")
+			yield(Audio.audio_player.play_sfx(Audio.id[str(Audio.ITEM_REVIVE)]), "finished")

@@ -9,6 +9,7 @@ var member_id
 var sprite
 var is_dead = false
 var type = "Player"
+var targets: Array = []
 
 var level: int = 0
 var exp_current: int = 0
@@ -58,5 +59,8 @@ func set_deselected() -> void:
 func modify_hp(amount, is_damage: bool = true) -> void:
 	if is_damage:
 		hp_current -= amount
+		print("%s took %d damage" % [member_name, amount])
 		if hp_current <= 0:
 			Events.emit_signal("battle_member_died", self)
+	else:
+		hp_current = min(hp_current + amount, hp_max)

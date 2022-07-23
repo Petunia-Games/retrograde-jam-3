@@ -7,14 +7,6 @@ onready var ui: VBoxContainer = $UI
 var player_member_scene = preload("res://Battle/BattleMember.tscn")
 var enemy_member_scene = preload("res://Battle/EnemyMember.tscn")
 
-enum {
-	DECISION_PHASE,
-	ACTION_PHASE
-}
-
-
-var current_phase
-
 
 func _ready() -> void:
 	BattleGlobals.clear()
@@ -27,6 +19,7 @@ func _ready() -> void:
 	Events.connect("battle_player_action_added", self, "_on_battle_player_action_added")
 	Events.connect("battle_enemy_action_added", self, "_on_battle_enemy_action_added")
 	Events.connect("battle_member_died", self, "_on_battle_member_died")
+
 
 func set_enemies_from_encounter_id(enc_id) -> void:
 	for enemy_id in Encounters.id[str(enc_id)]:
@@ -77,7 +70,8 @@ func _on_battle_decision_phase_finished() -> void:
 func _on_battle_action_phase_started() -> void:
 	ui.show_beat_window()
 	for turn in BattleGlobals.turn_queue:
-		yield(Abilities.do_action(turn), "completed")
+		if not turn.from.is_dead:
+			yield(Abilities.do_action(turn), "completed")
 
 	Events.emit_signal("battle_action_phase_finished")
 
@@ -108,4 +102,4 @@ func _on_battle_enemy_action_added(action, from, to) -> void:
 
 func _on_battle_member_died(member) -> void:
 	if member.type == "Enemy":
-		queue_free()
+		print("Enemy %s died." % member.member_name)

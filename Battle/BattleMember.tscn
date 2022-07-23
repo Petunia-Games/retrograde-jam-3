@@ -115,8 +115,8 @@ texture = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -16.0
-margin_right = 48.0
-margin_bottom = 32.0
+margin_right = 64.0
+margin_bottom = 48.0
 texture = ExtResource( 3 )
 
 [node name="PointerAnimationPlayer" type="AnimationPlayer" parent="."]

@@ -18,6 +18,8 @@ func process_input() -> void:
 		Audio.audio_player.play_sfx(Audio.id[str(Audio.UI_MOVE_CURSOR)])
 	
 	if Input.is_action_just_pressed("confirm"):
+		for target in get_children():
+			from.targets.append(target.target_ref)
 		to = get_child(selected_target_index)
 		Events.emit_signal("battle_target_selected", action, from, to)
 	elif Input.is_action_just_pressed("cancel"):
@@ -35,6 +37,7 @@ func add_target_to_list(target_data) -> void:
 func populate_list(ability) -> void:
 	action = ability
 	from = BattleGlobals.active_player_party_members[BattleGlobals.active_party_member_index]
+	from.targets.clear()
 	clear_list()
 	
 	match ability.type:

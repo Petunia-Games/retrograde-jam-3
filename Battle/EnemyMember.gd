@@ -11,6 +11,7 @@ var member_id
 var sprite
 var is_dead = false
 var type = "Enemy"
+var targets : Array = []
 
 var level: int = 0
 var experience: int = 0
@@ -21,6 +22,8 @@ var strength: int = 0
 var speed: int = 0
 var sorcery: int = 0
 var defense: int = 0
+
+var elemental_affinities: Dictionary = {}
 
 var items: Array = []
 
@@ -61,8 +64,12 @@ func set_deselected() -> void:
 func modify_hp(amount, is_damage: bool = true) -> void:
 	if is_damage:
 		hp_current -= amount
+		print("%s took %d damage" % [member_name, amount])
 		if hp_current <= 0:
+			is_dead = true
 			Events.emit_signal("battle_member_died", self)
+	else:
+		hp_current = min(hp_current + amount, hp_max)
 
 
 func decide_action() -> void:
